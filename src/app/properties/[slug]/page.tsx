@@ -19,7 +19,10 @@ import { getProperty, getSimilarProperties, properties } from "@/data/properties
 import { contact } from "@/config/contact";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import { formatPrice } from "@/lib/utils";
-import { site } from "@/config/social";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { buildMetadata } from "@/lib/seo";
+import { absoluteUrl } from "@/lib/seo";
+import { ORG_ID, breadcrumbSchema, cityEntity, webPageSchema } from "@/lib/schema";
 import type { PropertyCategory } from "@/types";
 
 const categoryLabels: Record<PropertyCategory, string> = {
@@ -43,24 +46,17 @@ export async function generateMetadata({
   if (!property) return {};
   const priceLabel =
     property.price != null ? formatPrice(property.price) : "Price on request";
-  const title = `${property.title} — ${property.location}`;
-  const description = `${priceLabel} · ${property.summary}`;
-  return {
+  const title = `${property.title} — ${property.location}, Trivandrum`;
+  const description = `${property.summary} ${priceLabel} · ${property.area.value.toLocaleString("en-IN")} ${property.area.unit} in ${property.location}, Trivandrum.`;
+  return buildMetadata({
     title,
     description,
-    alternates: { canonical: `/properties/${property.slug}` },
-    openGraph: {
-      title,
-      description,
-      type: "website",
-      images: [{ url: property.images[0], alt: property.title }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-    },
-  };
+    path: `/properties/${property.slug}`,
+    image: property.images[0],
+    imageAlt: property.title,
+    // Sample/placeholder listings must not be indexed as real inventory.
+    noindex: property.sample,
+  });
 }
 
 export default async function PropertyDetailsPage({
@@ -76,35 +72,70 @@ export default async function PropertyDetailsPage({
   const priceLabel =
     property.price != null ? formatPrice(property.price) : "Price on request";
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Offer" as const,
-    itemOffered: {
-      "@type": "Residence" as const,
-      name: property.title,
-      address: {
-        "@type": "PostalAddress" as const,
-        addressLocality: property.location,
-        addressRegion: "Kerala",
-        addressCountry: "IN",
-      },
-      photo: property.images[0],
-    },
-    ...(property.price != null
-      ? {
-          price: property.price,
-          priceCurrency: "INR",
-        }
-      : {}),
-    availability: "https://schema.org/InStock",
-    url: `${site.url}/properties/${property.slug}`,
-  };
+  const path = `/properties/${property.slug}`;
+  const listingSchema = property.sample
+    ? null
+    : {
+        "@context": "https://schema.org",
+        "@type": "RealEstateListing",
+        "@id": absoluteUrl(`${path}#listing`),
+        url: absoluteUrl(path),
+        name: property.title,
+        description: property.description.join(" "),
+        image: property.images,
+        inLanguage: "en-IN",
+        publisher: { "@id": ORG_ID },
+        about: {
+          "@type": property.category === "land-plot" ? "Landform" : "Residence",
+          name: property.title,
+          floorSize: {
+            "@type": "QuantitativeValue",
+            value: property.area.value,
+            unitText: property.area.unit,
+          },
+          ...(property.bedrooms != null ? { numberOfBedrooms: property.bedrooms } : {}),
+          ...(property.bathrooms != null ? { numberOfBathroomsTotal: property.bathrooms } : {}),
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: property.location,
+            addressRegion: "Kerala",
+            addressCountry: "IN",
+          },
+          containedInPlace: cityEntity,
+        },
+        ...(property.price != null && property.status === "available"
+          ? {
+              offers: {
+                "@type": "Offer",
+                price: property.price,
+                priceCurrency: "INR",
+                availability: "https://schema.org/InStock",
+                url: absoluteUrl(path),
+                seller: { "@id": ORG_ID },
+              },
+            }
+          : {}),
+      };
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Properties", path: "/properties" },
+            { name: property.title, path },
+          ]),
+          ...(listingSchema
+            ? [listingSchema]
+            : [
+                webPageSchema({
+                  name: property.title,
+                  description: property.summary,
+                  path,
+                }),
+              ]),
+        ]}
       />
 
       {/* Header band */}

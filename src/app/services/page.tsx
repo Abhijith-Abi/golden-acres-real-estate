@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import {
   Home,
@@ -15,13 +14,26 @@ import { Reveal, ImageReveal } from "@/components/ui/motion-primitives";
 import { EnquiryCTA } from "@/components/sections/EnquiryCTA";
 import { services } from "@/data/services";
 import type { Service } from "@/types";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { buildMetadata, coreKeywords } from "@/lib/seo";
+import { ORG_ID, breadcrumbSchema, webPageSchema } from "@/lib/schema";
+import { absoluteUrl } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Services",
-  description:
-    "Buying, selling, land & plot advisory, investment consultation and residential/commercial property services from Golden Acres Real Estates, Trivandrum.",
-  alternates: { canonical: "/services" },
-};
+const servicesDescription =
+  "Property buying and selling help, land and plot advisory, investment consultation, and residential and commercial property services in Trivandrum from Golden Acres Real Estates.";
+
+export const metadata = buildMetadata({
+  title: "Real Estate Services in Trivandrum",
+  description: servicesDescription,
+  path: "/services",
+  keywords: [
+    "property buying assistance Trivandrum",
+    "sell property in Trivandrum",
+    "land advisory Kerala",
+    "property investment consultation Trivandrum",
+    ...coreKeywords.slice(0, 5),
+  ],
+});
 
 const iconMap: Record<Service["icon"], React.ComponentType<{ className?: string }>> = {
   Home,
@@ -54,6 +66,38 @@ const processSteps = [
 export default function ServicesPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Services", path: "/services" },
+          ]),
+          {
+            ...webPageSchema({
+              type: "CollectionPage",
+              name: "Real estate services in Trivandrum",
+              description: servicesDescription,
+              path: "/services",
+            }),
+            mainEntity: {
+              "@type": "ItemList",
+              itemListElement: services.map((s, i) => ({
+                "@type": "ListItem",
+                position: i + 1,
+                item: {
+                  "@type": "Service",
+                  "@id": absoluteUrl(`/services#${s.slug}`),
+                  name: s.title,
+                  description: s.description,
+                  serviceType: s.shortTitle,
+                  provider: { "@id": ORG_ID },
+                  areaServed: { "@type": "City", name: "Thiruvananthapuram" },
+                },
+              })),
+            },
+          },
+        ]}
+      />
       <PageHero
         breadcrumb="Services"
         eyebrow="What we do"

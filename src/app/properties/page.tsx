@@ -1,19 +1,50 @@
-import type { Metadata } from "next";
 import { PageHero } from "@/components/layout/PageHero";
 import { PropertiesExplorer } from "@/components/property/PropertiesExplorer";
 import { properties } from "@/data/properties";
 import { brand } from "@/config/brand";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { buildMetadata, coreKeywords } from "@/lib/seo";
+import { breadcrumbSchema, webPageSchema } from "@/lib/schema";
+import { absoluteUrl } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Properties",
-  description:
-    "Browse houses, villas, apartments, land and commercial property across Trivandrum with Golden Acres Real Estates.",
-  alternates: { canonical: "/properties" },
-};
+const propertiesDescription =
+  "Browse houses, villas, flats, land, plots and commercial property for sale in Trivandrum (Thiruvananthapuram) with Golden Acres Real Estates.";
+
+export const metadata = buildMetadata({
+  title: "Properties for Sale in Trivandrum",
+  description: propertiesDescription,
+  path: "/properties",
+  keywords: coreKeywords,
+});
 
 export default function PropertiesPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Properties", path: "/properties" },
+          ]),
+          {
+            ...webPageSchema({
+              type: "CollectionPage",
+              name: "Properties for sale in Trivandrum",
+              description: propertiesDescription,
+              path: "/properties",
+            }),
+            mainEntity: {
+              "@type": "ItemList",
+              itemListElement: properties.map((p, i) => ({
+                "@type": "ListItem",
+                position: i + 1,
+                name: p.title,
+                url: absoluteUrl(`/properties/${p.slug}`),
+              })),
+            },
+          },
+        ]}
+      />
       <PageHero
         breadcrumb="Properties"
         eyebrow="The portfolio"

@@ -1,31 +1,30 @@
-import type { Metadata } from "next";
 import { Phone, Clock } from "lucide-react";
 import { PageHero } from "@/components/layout/PageHero";
 import { Reveal } from "@/components/ui/motion-primitives";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { WhatsAppIcon, InstagramIcon } from "@/components/ui/icons";
 import { contact } from "@/config/contact";
-import { social, site } from "@/config/social";
+import { social } from "@/config/social";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { buildMetadata, coreKeywords } from "@/lib/seo";
+import { breadcrumbSchema, webPageSchema } from "@/lib/schema";
+
 import { brand } from "@/config/brand";
 import { buildWhatsAppUrl, generalEnquiryMessage } from "@/lib/whatsapp";
 import { imagery } from "@/data/imagery";
 import Image from "next/image";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description:
-    "Talk to Golden Acres Real Estates — call or WhatsApp for property enquiries across Trivandrum, or send the contact form and we'll call you back.",
-  alternates: { canonical: "/contact" },
-};
+const contactDescription =
+  "Contact Golden Acres Real Estates in Trivandrum. Call or WhatsApp for land, flat, house and commercial property enquiries, or send the form and we will call you back.";
+
+export const metadata = buildMetadata({
+  title: "Contact Golden Acres — Real Estate in Trivandrum",
+  description: contactDescription,
+  path: "/contact",
+  keywords: ["contact real estate agent Trivandrum", "property enquiry Trivandrum", ...coreKeywords.slice(0, 5)],
+});
 
 export default function ContactPage() {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ContactPage",
-    name: `Contact ${brand.legalName}`,
-    url: `${site.url}/contact`,
-  };
-
   const channels = [
     ...(contact.phone.display
       ? [
@@ -67,9 +66,19 @@ export default function ContactPage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Contact", path: "/contact" },
+          ]),
+          webPageSchema({
+            type: "ContactPage",
+            name: `Contact ${brand.legalName}`,
+            description: contactDescription,
+            path: "/contact",
+          }),
+        ]}
       />
       <PageHero
         breadcrumb="Contact"

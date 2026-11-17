@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import { Compass, Eye, ShieldCheck, HeartHandshake, KeyRound, Users } from "lucide-react";
 import { PageHero } from "@/components/layout/PageHero";
@@ -7,14 +6,19 @@ import { Reveal, ImageReveal } from "@/components/ui/motion-primitives";
 import { EnquiryCTA } from "@/components/sections/EnquiryCTA";
 import { imagery } from "@/data/imagery";
 import { brand } from "@/config/brand";
-import { site } from "@/config/social";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { buildMetadata, coreKeywords } from "@/lib/seo";
+import { breadcrumbSchema, webPageSchema } from "@/lib/schema";
 
-export const metadata: Metadata = {
-  title: "About Us",
-  description:
-    "Golden Acres Real Estates — a neighbourhood-level real estate consultancy for Trivandrum: residential, commercial and land advisory built on transparency.",
-  alternates: { canonical: "/about" },
-};
+const aboutDescription =
+  "About Golden Acres Real Estates, a neighbourhood-level real estate consultancy in Trivandrum (Thiruvananthapuram) for residential, commercial and land property.";
+
+export const metadata = buildMetadata({
+  title: "About Golden Acres — Real Estate Consultants in Trivandrum",
+  description: aboutDescription,
+  path: "/about",
+  keywords: ["about Golden Acres Real Estates", "real estate consultants Trivandrum", ...coreKeywords.slice(0, 5)],
+});
 
 const values = [
   {
@@ -40,18 +44,21 @@ const values = [
 ];
 
 export default function AboutPage() {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "AboutPage",
-    name: `About ${brand.legalName}`,
-    url: `${site.url}/about`,
-  };
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "About Us", path: "/about" },
+          ]),
+          webPageSchema({
+            type: "AboutPage",
+            name: `About ${brand.legalName}`,
+            description: aboutDescription,
+            path: "/about",
+          }),
+        ]}
       />
       <PageHero
         breadcrumb="About Us"

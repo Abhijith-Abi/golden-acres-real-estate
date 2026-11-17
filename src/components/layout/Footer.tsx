@@ -2,6 +2,8 @@ import Link from "next/link";
 import { Phone } from "lucide-react";
 import { Logo } from "./Logo";
 import { navigation } from "@/data/navigation";
+import { locations } from "@/data/locations";
+import { propertyTypePages } from "@/data/property-types";
 import { brand } from "@/config/brand";
 import { contact } from "@/config/contact";
 import { social } from "@/config/social";
@@ -79,9 +81,30 @@ export function Footer() {
             Areas we serve
           </h2>
           <ul className="mt-5 space-y-3 text-sm text-ivory/75">
-            {brand.serviceAreas.map((area) => (
-              <li key={area}>{area}</li>
+            {locations.map((loc) => (
+              <li key={loc.slug}>
+                <Link href={`/locations/${loc.slug}`} className="transition-colors hover:text-gold-soft">
+                  {loc.name}
+                </Link>
+              </li>
             ))}
+          </ul>
+          <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-[0.32em] text-ivory/40">
+            Property in Trivandrum
+          </h2>
+          <ul className="mt-5 space-y-3 text-sm text-ivory/75">
+            {propertyTypePages.map((t) => (
+              <li key={t.slug}>
+                <Link href={`/trivandrum/${t.slug}`} className="transition-colors hover:text-gold-soft">
+                  {t.navLabel}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Link href="/faq" className="transition-colors hover:text-gold-soft">
+                FAQ
+              </Link>
+            </li>
           </ul>
         </div>
 

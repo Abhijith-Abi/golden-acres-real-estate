@@ -7,8 +7,9 @@ import { Footer } from "@/components/layout/Footer";
 import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
 import { Toaster } from "@/components/ui/sonner";
 import { site } from "@/config/social";
-import { brand } from "@/config/brand";
-import { social } from "@/config/social";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { siteGraph } from "@/lib/schema";
+import { coreKeywords, SITE_URL } from "@/lib/seo";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -23,38 +24,71 @@ const manrope = Manrope({
   display: "swap",
 });
 
+const homeTitle = `${site.name} — Property for Sale in Trivandrum`;
+const homeDescription =
+  "Real estate consultants in Trivandrum (Thiruvananthapuram). Land, plots, flats, villas and commercial property in Kazhakootam, Vellayani, Anayara and more.";
+
 export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: `${site.name} — Real Estate Consultant in Trivandrum`,
+    default: homeTitle,
     template: `%s — ${site.name}`,
   },
-  description: brand.description,
-  keywords: [
-    "Golden Acres Real Estates",
-    "real estate Trivandrum",
-    "property consultant Trivandrum",
-    "flats for sale Trivandrum",
-    "land for sale Trivandrum",
-    "houses for sale Trivandrum",
-    "Kazhakootam property",
-    "Anayara property",
-  ],
+  description: homeDescription,
+  applicationName: site.name,
+  keywords: coreKeywords,
+  authors: [{ name: site.name, url: SITE_URL }],
+  creator: site.name,
+  publisher: site.name,
+  category: "real estate",
+  formatDetection: { telephone: true, email: true, address: true },
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     siteName: site.name,
-    title: `${site.name} — Real Estate Consultant in Trivandrum`,
-    description: brand.shortDescription,
-    url: site.url,
+    title: homeTitle,
+    description: homeDescription,
+    url: "/",
     locale: site.locale,
+    images: [
+      {
+        url: "/og/golden-acres-og.png",
+        width: 1200,
+        height: 630,
+        alt: `${site.name} — real estate in Trivandrum, Kerala`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — Real Estate Consultant in Trivandrum`,
-    description: brand.shortDescription,
+    title: homeTitle,
+    description: homeDescription,
+    images: ["/og/golden-acres-og.png"],
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+      ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
+      : undefined,
+  },
+  // Regional hints: read by Bing and some directories/AI crawlers (Google ignores them).
+  other: {
+    "geo.region": "IN-KL",
+    "geo.placename": "Thiruvananthapuram",
+    "geo.position": "8.5241;76.9366",
+    ICBM: "8.5241, 76.9366",
+  },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -74,34 +108,6 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-/** Local SEO — real, published brand facts only. */
-function StructuredData() {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "RealEstateAgent",
-    name: brand.legalName,
-    url: site.url,
-    description: brand.description,
-    areaServed: brand.serviceAreas.map((name) => ({
-      "@type": "City",
-      name: `${name}, Thiruvananthapuram`,
-    })),
-    sameAs: [social.instagram],
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Thiruvananthapuram",
-      addressRegion: "Kerala",
-      addressCountry: "IN",
-    },
-  };
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
-  );
-}
-
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
@@ -110,7 +116,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col">
-        <StructuredData />
+        <JsonLd data={siteGraph()} />
         <SmoothScrollProvider>
           <a
             href="#main"

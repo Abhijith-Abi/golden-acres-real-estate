@@ -1,33 +1,40 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import { MapPin } from "lucide-react";import { PageHero } from "@/components/layout/PageHero";
 import { Reveal, ImageReveal } from "@/components/ui/motion-primitives";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { EnquiryCTA } from "@/components/sections/EnquiryCTA";
 import { projects } from "@/data/projects";
-import { site } from "@/config/social";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { buildMetadata, coreKeywords } from "@/lib/seo";
+import { breadcrumbSchema, webPageSchema } from "@/lib/schema";
 import { GoldLink } from "@/components/ui/buttons";
 
-export const metadata: Metadata = {
-  title: "Our Projects",
-  description:
-    "Residences, plots and commercial matches curated by Golden Acres Real Estates across Trivandrum's key neighbourhoods.",
-  alternates: { canonical: "/projects" },
-};
+const projectsDescription =
+  "Residences, plots and commercial spaces curated by Golden Acres Real Estates across Trivandrum's key neighbourhoods.";
+
+export const metadata = buildMetadata({
+  title: "Our Projects — Real Estate in Trivandrum",
+  description: projectsDescription,
+  path: "/projects",
+  keywords: ["real estate projects Trivandrum", ...coreKeywords.slice(0, 5)],
+});
 
 export default function ProjectsPage() {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name: "Our Projects — Golden Acres Real Estates",
-    url: `${site.url}/projects`,
-  };
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Our Projects", path: "/projects" },
+          ]),
+          webPageSchema({
+            type: "CollectionPage",
+            name: "Our Projects — Golden Acres Real Estates",
+            description: projectsDescription,
+            path: "/projects",
+          }),
+        ]}
       />
       <PageHero
         breadcrumb="Our Projects"

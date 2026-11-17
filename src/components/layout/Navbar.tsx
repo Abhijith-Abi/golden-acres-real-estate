@@ -44,7 +44,10 @@ export function Navbar() {
     };
   }, [menuOpen]);
 
-  const overHero = pathname === "/" && !scrolled && !menuOpen;
+  // Every page starts with a dark header band (hero / PageHero), so the
+  // transparent top-of-page navbar always uses light text. Once scrolled,
+  // the warm glass panel takes over with charcoal text.
+  const overHero = !scrolled && !menuOpen;
 
   return (
     <>

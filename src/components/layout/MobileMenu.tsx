@@ -6,6 +6,7 @@ import Link from "next/link";
 import { navigation } from "@/data/navigation";
 import { contact } from "@/config/contact";
 import { social } from "@/config/social";
+import { Logo } from "./Logo";
 import { buildWhatsAppUrl, generalEnquiryMessage } from "@/lib/whatsapp";
 import { InstagramIcon } from "@/components/ui/icons";
 import { EASE } from "@/lib/animations/variants";
@@ -38,9 +39,9 @@ export function MobileMenu({
           className="fixed inset-0 z-[60] flex flex-col overflow-y-auto bg-charcoal lg:hidden"
         >
           <div className="container-site flex h-20 items-center justify-between">
-            <span className="font-serif text-lg font-medium text-ivory">
-              Golden Acres
-            </span>
+            <div onClick={onClose}>
+              <Logo dark />
+            </div>
             <button
               type="button"
               onClick={onClose}

@@ -11,8 +11,8 @@ export const brand = {
   legalName: "Golden Acres Real Estates",
   shortDescription:
     "Real estate consultant in Trivandrum — residential and commercial property.",
-  /** Editorial tagline shown in hero / footer */
-  tagline: "Where your address becomes a legacy",
+  /** Official brand tagline per official logo lockup */
+  tagline: "Connecting you to your perfect home",
   description:
     "Golden Acres Real Estates is a real estate consultancy based in Trivandrum, Kerala, helping families and investors find, value and close residential and commercial property across the city's most promising neighbourhoods.",
   /** What the business actually does — per its own Instagram profile */

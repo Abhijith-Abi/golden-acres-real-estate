@@ -43,7 +43,7 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
 
     const raf = (time: number) => lenis.raf(time * 1000);
     gsap.ticker.add(raf);
-    gsap.ticker.lagSmoothing(0);
+    gsap.ticker.lagSmoothing(500, 33);
 
     const refresh = () => ScrollTrigger.refresh();
     window.addEventListener("load", refresh);

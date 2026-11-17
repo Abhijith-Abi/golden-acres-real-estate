@@ -8,10 +8,10 @@ const u = (id: string, w = 1600) =>
   `https://images.unsplash.com/photo-${id}?q=80&w=${w}&auto=format&fit=crop`;
 
 export const imagery = {
-  hero: u("1600585154340-be6161a56a0c", 2000),
-  heroAlt: "Modern premium residence with pool at golden hour",
-  introMain: u("1613490493576-7fde63acd811"),
-  introMainAlt: "Contemporary villa facade with warm evening light",
+  hero: u("1613490493576-7fde63acd811", 2000),
+  heroAlt: "Architectural luxury villa with illuminated infinity pool at dusk",
+  introMain: u("1600596542815-ffad4c1539a9"),
+  introMainAlt: "Contemporary luxury estate exterior with glowing architectural lighting",
   introSecondary: u("1600607687939-ce8a6c25118c"),
   introSecondaryAlt: "Bright living room interior with designer furnishings",
   ctaBackground: u("1564013799919-ab600027ffc6"),

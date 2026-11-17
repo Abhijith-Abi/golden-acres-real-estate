@@ -21,7 +21,7 @@ export default function NotFound() {
       <div className="mt-10 flex flex-wrap justify-center gap-4">
         <Link
           href="/properties"
-          className="inline-flex h-13 items-center bg-gold-soft px-8 text-[12px] font-medium uppercase tracking-[0.18em] text-charcoal transition-colors hover:bg-ivory"
+          className="inline-flex h-13 items-center bg-gradient-to-r from-gold-soft via-gold to-gold-deep px-8 text-[12px] font-semibold uppercase tracking-[0.18em] text-charcoal shadow-[0_2px_14px_rgba(212,175,55,0.3)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_4px_20px_rgba(212,175,55,0.45)] active:scale-[0.98]"
         >
           Browse Properties
         </Link>

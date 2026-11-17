@@ -94,10 +94,10 @@ export function Navbar() {
             <Link
               href="/contact"
               className={cn(
-                "hidden h-11 items-center px-6 text-[12px] font-medium uppercase tracking-[0.18em] transition-colors duration-300 sm:inline-flex",
+                "hidden h-11 items-center px-6 text-[12px] font-semibold uppercase tracking-[0.18em] transition-all duration-300 sm:inline-flex",
                 overHero
-                  ? "bg-gold-soft text-charcoal hover:bg-ivory"
-                  : "bg-charcoal text-ivory hover:bg-charcoal-soft"
+                  ? "bg-gradient-to-r from-gold-soft via-gold to-gold-deep text-charcoal shadow-[0_2px_14px_rgba(212,175,55,0.35)] hover:shadow-[0_4px_22px_rgba(212,175,55,0.5)] hover:scale-[1.02] active:scale-[0.98]"
+                  : "bg-charcoal text-ivory border border-gold/30 hover:border-gold hover:bg-charcoal-soft hover:text-gold-soft"
               )}
             >
               Enquire Now

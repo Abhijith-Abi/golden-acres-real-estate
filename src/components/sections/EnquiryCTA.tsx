@@ -38,7 +38,7 @@ export function EnquiryCTA() {
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <a
               href="/contact"
-              className="group inline-flex h-14 items-center gap-3 bg-gold-soft px-9 text-[12px] font-medium uppercase tracking-[0.18em] text-charcoal transition-colors hover:bg-ivory"
+              className="group inline-flex h-14 items-center gap-3 bg-gradient-to-r from-gold-soft via-gold to-gold-deep px-9 text-[12px] font-semibold uppercase tracking-[0.18em] text-charcoal shadow-[0_4px_20px_rgba(212,175,55,0.35)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_6px_28px_rgba(212,175,55,0.5)] active:scale-[0.98]"
             >
               Enquire Now
               <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>

@@ -132,9 +132,9 @@ export function PropertiesExplorer({
               className="pl-10"
             />
           </div>
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:items-center">
             <Select value={category} onValueChange={setCategory}>
-              <SelectTrigger className="min-w-0 flex-1 sm:w-[180px] sm:flex-none" aria-label="Filter by category">
+              <SelectTrigger className="w-full sm:w-[180px] sm:flex-none" aria-label="Filter by category">
                 <SelectValue placeholder="Category" />
               </SelectTrigger>
               <SelectContent>
@@ -146,7 +146,7 @@ export function PropertiesExplorer({
               </SelectContent>
             </Select>
             <Select value={location} onValueChange={setLocation}>
-              <SelectTrigger className="min-w-0 flex-1 sm:w-[180px] sm:flex-none" aria-label="Filter by location">
+              <SelectTrigger className="w-full sm:w-[180px] sm:flex-none" aria-label="Filter by location">
                 <SelectValue placeholder="Location" />
               </SelectTrigger>
               <SelectContent>
@@ -159,7 +159,7 @@ export function PropertiesExplorer({
               </SelectContent>
             </Select>
             <Select value={status} onValueChange={setStatus}>
-              <SelectTrigger className="min-w-0 flex-1 sm:w-[180px] sm:flex-none" aria-label="Filter by availability">
+              <SelectTrigger className="w-full sm:w-[180px] sm:flex-none" aria-label="Filter by availability">
                 <SelectValue placeholder="Availability" />
               </SelectTrigger>
               <SelectContent>
@@ -169,7 +169,7 @@ export function PropertiesExplorer({
               </SelectContent>
             </Select>
             <Select value={sort} onValueChange={(v) => setSort(v as SortKey)}>
-              <SelectTrigger className="min-w-0 flex-1 sm:w-[190px] sm:flex-none" aria-label="Sort properties">
+              <SelectTrigger className="w-full sm:w-[190px] sm:flex-none" aria-label="Sort properties">
                 <SelectValue placeholder="Sort" />
               </SelectTrigger>
               <SelectContent>

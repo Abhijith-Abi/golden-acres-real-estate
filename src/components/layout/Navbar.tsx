@@ -58,7 +58,7 @@ export function Navbar() {
         className={cn(
           "fixed inset-x-0 top-0 z-50 transition-all duration-500",
           scrolled
-            ? "border-b border-charcoal/[0.08] bg-background/85 backdrop-blur-md"
+            ? "border-b border-charcoal/[0.08] bg-background/95 backdrop-blur-md"
             : "border-b border-transparent bg-transparent"
         )}
       >

@@ -151,8 +151,11 @@ export default async function PropertyDetailsPage({
 
       <section className="py-12 lg:py-16">
         <div className="container-site grid gap-12 lg:grid-cols-[1.55fr_1fr] lg:gap-14">
-          {/* Left: gallery + description + specs */}
-          <div>
+          {/* Left: gallery + description + specs.
+              min-w-0 is critical: without it the grid track sizes to the
+              Swiper slides' min-content, which feeds back into Swiper's
+              slide-width measurement and the layout grows unbounded. */}
+          <div className="min-w-0">
             <PropertyGallery property={property} />
 
             {/* Price + quick facts bar */}
@@ -283,7 +286,7 @@ export default async function PropertyDetailsPage({
           </div>
 
           {/* Right: sticky enquiry panel */}
-          <aside id="enquiry" className="scroll-mt-28 lg:sticky lg:top-28 lg:self-start">
+          <aside id="enquiry" className="min-w-0 scroll-mt-28 lg:sticky lg:top-28 lg:self-start">
             <div className="border border-charcoal/10 bg-card p-6 sm:p-8">
               <p className="eyebrow">Enquire</p>
               <h2 className="mt-3 font-serif text-2xl font-light leading-snug text-charcoal">

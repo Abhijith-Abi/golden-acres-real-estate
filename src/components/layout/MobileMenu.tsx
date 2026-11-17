@@ -35,7 +35,7 @@ export function MobileMenu({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.35 }}
-          className="fixed inset-0 z-[60] flex flex-col bg-charcoal lg:hidden"
+          className="fixed inset-0 z-[60] flex flex-col overflow-y-auto bg-charcoal lg:hidden"
         >
           <div className="container-site flex h-20 items-center justify-between">
             <span className="font-serif text-lg font-medium text-ivory">
@@ -53,7 +53,7 @@ export function MobileMenu({
 
           <nav
             aria-label="Mobile"
-            className="container-site flex flex-1 flex-col justify-center"
+            className="container-site flex min-h-0 flex-1 flex-col justify-center py-6"
           >
             <ul className="space-y-1">
               {links.map((item, i) => (
@@ -68,7 +68,7 @@ export function MobileMenu({
                     href={item.href}
                     onClick={onClose}
                     className={cn(
-                      "group flex items-baseline gap-4 border-b border-ivory/[0.08] py-4",
+                      "group flex items-baseline gap-4 border-b border-ivory/[0.08] py-3 sm:py-4",
                       item.label === "Enquire Now" ? "text-gold-soft" : "text-ivory"
                     )}
                   >

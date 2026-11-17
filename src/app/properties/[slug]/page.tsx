@@ -183,6 +183,17 @@ export default async function PropertyDetailsPage({
               </a>
             </div>
 
+            {/* Mobile quick-enquire — jumps straight to the enquiry form */}
+            <div className="mt-4 lg:hidden">
+              <a
+                href="#enquiry"
+                className="flex h-13 w-full items-center justify-center gap-3 bg-charcoal text-[12px] font-medium uppercase tracking-[0.18em] text-ivory transition-colors hover:bg-charcoal-soft"
+              >
+                Enquire Now
+                <span aria-hidden>↓</span>
+              </a>
+            </div>
+
             {/* Description */}
             <div className="mt-12">
               <h2 className="font-serif text-2xl font-light text-charcoal sm:text-3xl">
@@ -201,13 +212,13 @@ export default async function PropertyDetailsPage({
                 Specifications
               </h2>
               <dl className="mt-5 grid grid-cols-1 border border-charcoal/10 bg-card sm:grid-cols-2">
-                {property.specifications.map((spec, i) => (
+                {property.specifications.map((spec) => (
                   <div
                     key={spec.label}
-                    className={`flex items-center justify-between px-6 py-4 ${i < property.specifications.length - 2 ? "border-b border-charcoal/10" : ""} sm:odd:border-r sm:[&:nth-last-child(2)]:border-b-0`}
+                    className="flex items-center justify-between gap-4 border-b border-charcoal/10 px-6 py-4 last:border-b-0 sm:odd:border-r sm:[&:nth-last-child(-n+2)]:border-b-0"
                   >
                     <dt className="text-[13px] text-muted-foreground">{spec.label}</dt>
-                    <dd className="text-[13px] font-medium text-charcoal">{spec.value}</dd>
+                    <dd className="text-right text-[13px] font-medium text-charcoal">{spec.value}</dd>
                   </div>
                 ))}
               </dl>
@@ -272,7 +283,7 @@ export default async function PropertyDetailsPage({
           </div>
 
           {/* Right: sticky enquiry panel */}
-          <aside className="lg:sticky lg:top-28 lg:self-start">
+          <aside id="enquiry" className="scroll-mt-28 lg:sticky lg:top-28 lg:self-start">
             <div className="border border-charcoal/10 bg-card p-6 sm:p-8">
               <p className="eyebrow">Enquire</p>
               <h2 className="mt-3 font-serif text-2xl font-light leading-snug text-charcoal">

@@ -106,13 +106,13 @@ export function Hero() {
           Golden Acres Real Estates — Trivandrum
         </motion.p>
 
-        <h1 className="mt-6 max-w-4xl font-serif text-[13.5vw] font-light leading-[1.02] tracking-[-0.015em] text-ivory sm:text-7xl lg:text-[5.6rem]">
-          <span className="block overflow-hidden pb-1">
+        <h1 className="mt-6 max-w-4xl font-serif text-[11.5vw] font-light leading-[1.06] tracking-[-0.015em] text-ivory sm:text-7xl sm:leading-[1.02] lg:text-[5.6rem]">
+          <span className="block overflow-hidden pb-[0.14em] -mb-[0.14em]">
             <span className="hero-line block will-change-transform">
               Where your address
             </span>
           </span>
-          <span className="block overflow-hidden pb-2">
+          <span className="block overflow-hidden pb-[0.16em] -mb-[0.1em]">
             <span className="hero-line block will-change-transform">
               becomes a <em className="font-light italic text-gold-soft">legacy.</em>
             </span>

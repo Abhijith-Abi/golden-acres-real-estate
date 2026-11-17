@@ -161,6 +161,7 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "ss01";
+    overflow-x: clip;
   }
   html {
     @apply font-sans;

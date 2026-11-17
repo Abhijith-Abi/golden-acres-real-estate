@@ -27,6 +27,15 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Render-time state adjustment: a navigation resets the scroll position,
+  // so the "scrolled" style must reset too — avoids a wrong-colour navbar
+  // flash when moving between dark-hero and light pages.
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
+    setScrolled(false);
+  }
+
   // Lock body scroll while the mobile menu is open.
   useEffect(() => {
     document.documentElement.style.overflow = menuOpen ? "hidden" : "";

@@ -6,9 +6,34 @@ import { Select as SelectPrimitive } from "radix-ui"
 import { ChevronDownIcon, CheckIcon, ChevronUpIcon } from "lucide-react"
 
 function Select({
+  open: openProp,
+  onOpenChange,
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Root>) {
-  return <SelectPrimitive.Root data-slot="select" {...props} />
+  // Track open state so we can lock background scroll while the dropdown is up.
+  const [openState, setOpenState] = React.useState(false)
+  const open = openProp ?? openState
+
+  React.useEffect(() => {
+    if (!open) return
+    const { overflow } = document.body.style
+    document.body.style.overflow = "hidden"
+    return () => {
+      document.body.style.overflow = overflow
+    }
+  }, [open])
+
+  return (
+    <SelectPrimitive.Root
+      data-slot="select"
+      open={openProp}
+      onOpenChange={(next) => {
+        setOpenState(next)
+        onOpenChange?.(next)
+      }}
+      {...props}
+    />
+  )
 }
 
 function SelectGroup({
@@ -59,7 +84,7 @@ function SelectTrigger({
 function SelectContent({
   className,
   children,
-  position = "item-aligned",
+  position = "popper",
   align = "center",
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Content>) {
@@ -77,7 +102,7 @@ function SelectContent({
         <SelectPrimitive.Viewport
           data-position={position}
           className={cn(
-            "data-[position=popper]:h-(--radix-select-trigger-height) data-[position=popper]:w-full data-[position=popper]:min-w-(--radix-select-trigger-width)",
+            "data-[position=popper]:w-full data-[position=popper]:min-w-(--radix-select-trigger-width) data-[position=popper]:max-h-(--radix-select-content-available-height)",
             position === "popper" && ""
           )}
         >

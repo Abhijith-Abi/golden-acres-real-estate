@@ -8,6 +8,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { buildMetadata, coreKeywords } from "@/lib/seo";
 import { breadcrumbSchema, webPageSchema } from "@/lib/schema";
 import { GoldLink } from "@/components/ui/buttons";
+import { projectImagery } from "@/data/imagery";
 
 const projectsDescription =
   "Residences, plots and commercial spaces curated by Golden Acres Real Estates across Trivandrum's key neighbourhoods.";
@@ -46,6 +47,7 @@ export default function ProjectsPage() {
           </>
         }
         lede="Residences, plots and commercial spaces matched with the right families and businesses across Trivandrum."
+        backgroundImage={projectImagery[0]}
       />
 
       <section className="py-20 lg:py-28">

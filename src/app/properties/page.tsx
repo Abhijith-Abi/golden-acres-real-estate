@@ -1,6 +1,7 @@
 import { PageHero } from "@/components/layout/PageHero";
 import { PropertiesExplorer } from "@/components/property/PropertiesExplorer";
 import { properties } from "@/data/properties";
+import { propertyImagery } from "@/data/imagery";
 import { brand } from "@/config/brand";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildMetadata, coreKeywords } from "@/lib/seo";
@@ -54,6 +55,7 @@ export default function PropertiesPage() {
           </>
         }
         lede={`Houses, apartments, land and commercial spaces in ${brand.serviceAreas.slice(0, 5).join(", ")} and more. Filter by what matters to you — or tell us what you need and we'll search off-market too.`}
+        backgroundImage={propertyImagery[0]}
       />
       <section className="py-16 lg:py-24">
         <div className="container-site">

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
+import { MapPin } from "lucide-react";
 import { imagery } from "@/data/imagery";
 import { brand } from "@/config/brand";
 import {
@@ -131,26 +132,35 @@ export function Hero() {
           </Link>
         </motion.div>
 
-        {/* Areas strip with animated border reveal */}
+        {/* Areas ticker tape: silky infinite marquee with edge gradient fade masks */}
         <motion.div
           variants={fadeInVariant}
-          className="mt-12 hidden origin-left items-center gap-4 border-t border-ivory/20 pt-5 text-[11px] font-medium uppercase tracking-[0.28em] text-ivory/60 md:flex"
+          className="mt-12 hidden items-center gap-5 border-t border-ivory/15 pt-5 md:flex overflow-hidden"
         >
-          <span className="text-gold font-semibold shrink-0">
-            Areas we serve
-          </span>
-          <span className="flex flex-wrap items-center gap-x-2.5 gap-y-1">
-            {brand.serviceAreas.map((area, index) => (
-              <span key={area} className="inline-flex items-center gap-2.5">
-                <span className="transition-colors hover:text-ivory">
-                  {area}
+          {/* Fixed Luxury Tag */}
+          <div className="flex items-center gap-2.5 shrink-0">
+            <span className="flex size-6 items-center justify-center rounded-full bg-gold/15 text-gold border border-gold/30 shadow-[0_1px_8px_rgba(212,175,55,0.2)]">
+              <MapPin className="size-3" />
+            </span>
+            <span className="text-gold font-semibold text-[11px] uppercase tracking-[0.25em]">
+              Areas We Serve
+            </span>
+            <span className="h-3 w-px bg-ivory/20 mx-1" />
+          </div>
+
+          {/* Seamless Infinite Marquee with Optical Gradient Edge Masks */}
+          <div className="relative flex-1 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
+            <div className="flex w-max animate-marquee items-center gap-7 text-[11.5px] font-medium tracking-[0.2em] text-ivory/65">
+              {[...brand.serviceAreas, ...brand.serviceAreas].map((area, index) => (
+                <span key={`${area}-${index}`} className="inline-flex items-center gap-7 shrink-0">
+                  <span className="transition-colors hover:text-gold-soft cursor-pointer">
+                    {area}
+                  </span>
+                  <span className="text-gold/40 text-[8px]">✦</span>
                 </span>
-                {index < brand.serviceAreas.length - 1 && (
-                  <span className="text-gold/40 text-[9px] font-bold">·</span>
-                )}
-              </span>
-            ))}
-          </span>
+              ))}
+            </div>
+          </div>
         </motion.div>
       </motion.div>
 

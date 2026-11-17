@@ -13,6 +13,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal, ImageReveal } from "@/components/ui/motion-primitives";
 import { EnquiryCTA } from "@/components/sections/EnquiryCTA";
 import { services } from "@/data/services";
+import { imagery } from "@/data/imagery";
 import type { Service } from "@/types";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildMetadata, coreKeywords } from "@/lib/seo";
@@ -108,6 +109,7 @@ export default function ServicesPage() {
           </>
         }
         lede="Residential and commercial — buying, selling, land and investment guidance under one roof, always with one consultant who stays with your file."
+        backgroundImage={imagery.servicesMain}
       />
 
       {/* Service editorial rows */}

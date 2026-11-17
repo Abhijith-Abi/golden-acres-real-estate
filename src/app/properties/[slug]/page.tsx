@@ -138,9 +138,22 @@ export default async function PropertyDetailsPage({
         ]}
       />
 
-      {/* Header band */}
-      <section className="bg-charcoal pb-10 pt-32 text-ivory sm:pt-36 lg:pt-40">
-        <div className="container-site">
+      {/* Header band with Property Hero Image Backdrop */}
+      <section className="relative overflow-hidden bg-charcoal pb-12 pt-32 text-ivory sm:pt-36 lg:pt-40 border-b border-ivory/10">
+        <div className="absolute inset-0 overflow-hidden">
+          <Image
+            src={property.images[0]}
+            alt={property.title}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/95 via-charcoal/80 to-charcoal/95" />
+          <div className="absolute inset-0 bg-gradient-to-r from-charcoal/90 via-charcoal/50 to-transparent" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(212,175,55,0.08)_0%,_transparent_70%)]" />
+        </div>
+        <div className="container-site relative z-10">
           <nav aria-label="Breadcrumb" className="mb-6 text-[11px] uppercase tracking-[0.24em] text-ivory/45">
             <Link href="/" className="hover:text-gold-soft">Home</Link>
             <span aria-hidden className="mx-2.5 text-ivory/25">/</span>

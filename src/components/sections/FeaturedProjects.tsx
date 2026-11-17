@@ -1,134 +1,281 @@
 import Image from "next/image";
-import { MapPin } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, MapPin, Building2, Trees, Landmark, Sparkles } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { Reveal, ImageReveal } from "@/components/ui/motion-primitives";
-import { GoldLink } from "@/components/ui/buttons";
+import { GhostButton } from "@/components/ui/buttons";
+import { Reveal } from "@/components/ui/motion-primitives";
 import { getFeaturedProjects } from "@/data/projects";
 
+const categoryIcons = {
+  Residential: Building2,
+  "Land & Plots": Trees,
+  Commercial: Landmark,
+};
+
 /**
- * Featured projects — an editorial magazine grid: one wide lead card,
- * one tall side card, one full-width closing card.
+ * Featured Projects — Architectural Luxury Bento Grid.
+ * Replaces the disjointed photo blocks with an asymmetric, geometrically balanced Bento Grid:
+ *   - Top Tier: 7-col Hero Showcase + 5-col Land Portfolio (both 460px height)
+ *   - Lower Tier: 6-col Commercial Hub + 6-col Bespoke Advisory VIP Tile (both 320px height)
  */
 export function FeaturedProjects() {
   const [lead, side, closing] = getFeaturedProjects();
 
   return (
     <section
-      className="bg-secondary/60 py-24 lg:py-32"
+      className="bg-secondary/60 py-24 lg:py-32 overflow-hidden border-t border-charcoal/[0.08]"
       aria-labelledby="projects-heading"
     >
       <div className="container-site">
-        <div className="flex flex-wrap items-end justify-between gap-8">
+        {/* Section Header */}
+        <div className="flex flex-wrap items-end justify-between gap-8 pb-12 border-b border-charcoal/[0.08]">
           <SectionHeading
             eyebrow="Our projects"
             title={
               <span id="projects-heading">
-                Work we&apos;re <em className="italic text-gold-deep">proud to walk you through</em>
+                Work we&apos;re{" "}
+                <em className="font-light italic text-gold-deep bg-gradient-to-r from-[#B88E33] via-[#D4AF37] to-[#A6802C] bg-clip-text text-transparent">
+                  proud to walk you through
+                </em>
               </span>
             }
             lede="Residences, plots and commercial addresses we've matched across Trivandrum's most promising neighbourhoods."
+            className="max-w-2xl"
           />
-          <Reveal delay={0.15}>
-            <GoldLink href="/projects">All projects</GoldLink>
+          <Reveal delay={0.15} className="hidden md:block">
+            <GhostButton href="/projects" size="md">
+              View all projects
+            </GhostButton>
           </Reveal>
         </div>
 
-        <div className="mt-16 grid gap-8 lg:grid-cols-12">
-          {/* Lead — wide */}
+        {/* Bento Grid Architecture */}
+        <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-7">
+          {/* ========================================================= */}
+          {/* 1. Project Lead Hero Bento (Col 1-7, 460px) */}
+          {/* ========================================================= */}
           {lead && (
-            <Reveal className="lg:col-span-7">
-              <article>
-                <ImageReveal className="aspect-[16/10] w-full">
+            <div className="lg:col-span-7">
+              <Reveal className="h-full">
+                <Link
+                  href={`/projects#${lead.slug}`}
+                  className="group relative flex h-[420px] sm:h-[460px] w-full flex-col justify-between overflow-hidden rounded-xl border border-charcoal/10 bg-charcoal shadow-sm transition-all duration-500 hover:border-gold/60 hover:shadow-[0_16px_40px_rgba(212,175,55,0.18)]"
+                >
+                  {/* Full-bleed Photo */}
                   <Image
                     src={lead.image}
-                    alt={`${lead.title} — ${lead.category} project in ${lead.location}`}
+                    alt={`${lead.title} — ${lead.category} in ${lead.location}`}
                     fill
-                    sizes="(min-width: 1024px) 58vw, 100vw"
-                    className="object-cover transition-transform duration-700 hover:scale-[1.03]"
+                    priority
+                    sizes="(min-width: 1024px) 60vw, 100vw"
+                    className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
                   />
-                </ImageReveal>
-                <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
-                  <div>
-                    <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-gold-deep">
-                      {lead.category}
-                    </p>
-                    <h3 className="mt-2 font-serif text-3xl font-light text-charcoal">
-                      {lead.title}
-                    </h3>
-                    <p className="mt-2 flex items-center gap-1.5 text-sm text-muted-foreground">
-                      <MapPin className="size-3.5" /> {lead.location}
-                    </p>
+
+                  {/* Dark Vignette Overlays */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/40 to-charcoal/60" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-charcoal/70 via-transparent to-transparent" />
+
+                  {/* Top Badges */}
+                  <div className="relative z-10 flex items-center justify-between p-6 sm:p-7">
+                    <div className="flex items-center gap-2">
+                      <span className="rounded-md bg-charcoal/85 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-ivory backdrop-blur-md border border-ivory/15">
+                        {lead.category}
+                      </span>
+                      <span className="rounded-md bg-gold/90 px-2.5 py-1 text-[9.5px] font-semibold uppercase tracking-[0.2em] text-charcoal">
+                        {lead.location.split(",")[0]}
+                      </span>
+                    </div>
+                    <span className="rounded-full bg-ivory/90 px-3 py-1 text-[9px] font-medium uppercase tracking-[0.2em] text-charcoal/80 backdrop-blur-md">
+                      Featured Project
+                    </span>
                   </div>
-                  <GoldLink href={`/projects#${lead.slug}`}>View project</GoldLink>
-                </div>
-              </article>
-            </Reveal>
+
+                  {/* Bottom Info Card */}
+                  <div className="relative z-10 p-6 sm:p-7">
+                    <div className="rounded-lg border border-ivory/15 bg-charcoal/80 p-5 sm:p-6 backdrop-blur-md transition-all duration-300 group-hover:border-gold/40">
+                      <p className="flex items-center gap-1.5 text-[10.5px] font-medium uppercase tracking-[0.2em] text-gold-soft">
+                        <MapPin className="size-3.5 text-gold shrink-0" />
+                        {lead.location}
+                      </p>
+                      <h3 className="mt-2 font-serif text-2xl font-light text-ivory transition-colors group-hover:text-gold-soft sm:text-[1.75rem]">
+                        {lead.title}
+                      </h3>
+                      <p className="mt-2 text-[13.5px] leading-relaxed text-ivory/70 line-clamp-2">
+                        {lead.description[0]}
+                      </p>
+
+                      <div className="mt-4 flex items-center justify-between border-t border-ivory/15 pt-3.5 text-[12px]">
+                        <span className="text-ivory/60">
+                          Verified Title · Technopark Belt
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 font-semibold uppercase tracking-[0.18em] text-gold-soft group-hover:text-ivory transition-colors">
+                          <span>View Case Study</span>
+                          <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </Reveal>
+            </div>
           )}
 
-          {/* Side — tall */}
+          {/* ========================================================= */}
+          {/* 2. Side Project Bento (Col 8-12, 460px) */}
+          {/* ========================================================= */}
           {side && (
-            <Reveal delay={0.12} className="lg:col-span-5">
-              <article>
-                <ImageReveal className="aspect-[4/5] w-full" delay={0.1}>
+            <div className="lg:col-span-5">
+              <Reveal delay={0.1} className="h-full">
+                <Link
+                  href={`/projects#${side.slug}`}
+                  className="group relative flex h-[420px] sm:h-[460px] w-full flex-col justify-between overflow-hidden rounded-xl border border-charcoal/10 bg-charcoal shadow-sm transition-all duration-500 hover:border-gold/60 hover:shadow-[0_16px_40px_rgba(212,175,55,0.18)]"
+                >
                   <Image
                     src={side.image}
-                    alt={`${side.title} — ${side.category} project in ${side.location}`}
+                    alt={`${side.title} — ${side.category} in ${side.location}`}
                     fill
                     sizes="(min-width: 1024px) 40vw, 100vw"
-                    className="object-cover transition-transform duration-700 hover:scale-[1.03]"
+                    className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
                   />
-                </ImageReveal>
-                <div className="mt-6">
-                  <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-gold-deep">
-                    {side.category}
-                  </p>
-                  <h3 className="mt-2 font-serif text-3xl font-light text-charcoal">
-                    {side.title}
-                  </h3>
-                  <p className="mt-2 flex items-center gap-1.5 text-sm text-muted-foreground">
-                    <MapPin className="size-3.5" /> {side.location}
-                  </p>
-                  <div className="mt-4">
-                    <GoldLink href={`/projects#${side.slug}`}>View project</GoldLink>
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/45 to-charcoal/50" />
+
+                  {/* Top Badges */}
+                  <div className="relative z-10 flex items-center justify-between p-6 sm:p-7">
+                    <span className="rounded-md bg-charcoal/85 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-ivory backdrop-blur-md border border-ivory/15">
+                      {side.category}
+                    </span>
+                    <span className="rounded-md bg-gold-soft px-2.5 py-1 text-[9.5px] font-semibold uppercase tracking-[0.18em] text-charcoal">
+                      {side.location.split(",")[0]}
+                    </span>
                   </div>
-                </div>
-              </article>
-            </Reveal>
+
+                  {/* Bottom Info Card */}
+                  <div className="relative z-10 p-6 sm:p-7">
+                    <div className="rounded-lg border border-ivory/15 bg-charcoal/80 p-5 backdrop-blur-md transition-all duration-300 group-hover:border-gold/40">
+                      <p className="flex items-center gap-1.5 text-[10.5px] font-medium uppercase tracking-[0.2em] text-gold-soft">
+                        <MapPin className="size-3.5 text-gold shrink-0" />
+                        {side.location}
+                      </p>
+                      <h3 className="mt-1.5 font-serif text-2xl font-light text-ivory transition-colors group-hover:text-gold-soft">
+                        {side.title}
+                      </h3>
+                      <p className="mt-2 text-[13px] leading-relaxed text-ivory/70 line-clamp-2">
+                        {side.description[0]}
+                      </p>
+
+                      <div className="mt-4 flex items-center justify-between border-t border-ivory/15 pt-3 text-[12px]">
+                        <span className="text-ivory/60">
+                          10-25 Cents · Clear Deeds
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 font-semibold uppercase tracking-[0.18em] text-gold-soft group-hover:text-ivory transition-colors">
+                          <span>View Portfolio</span>
+                          <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </Reveal>
+            </div>
           )}
 
-          {/* Closing — full width, text-left image-right */}
+          {/* ========================================================= */}
+          {/* 3. Commercial Project Bento (Col 1-6, 320px) */}
+          {/* ========================================================= */}
           {closing && (
-            <Reveal delay={0.1} className="lg:col-span-12">
-              <article className="grid gap-8 border border-charcoal/10 bg-card p-6 sm:p-10 lg:grid-cols-2 lg:items-center lg:gap-14">
-                <div>
-                  <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-gold-deep">
-                    {closing.category}
-                  </p>
-                  <h3 className="mt-3 font-serif text-3xl font-light text-charcoal sm:text-4xl">
-                    {closing.title}
-                  </h3>
-                  <p className="mt-4 max-w-lg text-sm leading-relaxed text-muted-foreground">
-                    {closing.description[0]}
-                  </p>
-                  <p className="mt-2 flex items-center gap-1.5 text-sm text-muted-foreground">
-                    <MapPin className="size-3.5" /> {closing.location}
-                  </p>
-                  <div className="mt-6">
-                    <GoldLink href={`/projects#${closing.slug}`}>View project</GoldLink>
-                  </div>
-                </div>
-                <ImageReveal className="aspect-[16/10] w-full" delay={0.15}>
+            <div className="lg:col-span-6">
+              <Reveal delay={0.15} className="h-full">
+                <Link
+                  href={`/projects#${closing.slug}`}
+                  className="group relative flex h-[300px] sm:h-[320px] w-full flex-col justify-between overflow-hidden rounded-xl border border-charcoal/10 bg-charcoal shadow-sm transition-all duration-500 hover:border-gold/60 hover:shadow-[0_12px_30px_rgba(212,175,55,0.15)]"
+                >
                   <Image
                     src={closing.image}
                     alt={`${closing.title} — ${closing.category} in ${closing.location}`}
                     fill
                     sizes="(min-width: 1024px) 50vw, 100vw"
-                    className="object-cover"
+                    className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
                   />
-                </ImageReveal>
-              </article>
-            </Reveal>
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/50 to-charcoal/30" />
+
+                  {/* Top Badges */}
+                  <div className="relative z-10 flex items-center justify-between p-6">
+                    <span className="rounded-md bg-charcoal/85 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-ivory backdrop-blur-md border border-ivory/15">
+                      {closing.category}
+                    </span>
+                    <span className="rounded-md bg-gold-soft px-2.5 py-1 text-[9.5px] font-semibold uppercase tracking-[0.18em] text-charcoal">
+                      {closing.location}
+                    </span>
+                  </div>
+
+                  {/* Bottom Info Card */}
+                  <div className="relative z-10 p-6">
+                    <div className="rounded-lg border border-ivory/15 bg-charcoal/80 p-4 sm:p-5 backdrop-blur-md transition-all duration-300 group-hover:border-gold/40">
+                      <p className="flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.2em] text-gold-soft">
+                        <MapPin className="size-3 text-gold" />
+                        {closing.location}
+                      </p>
+                      <h3 className="mt-1 font-serif text-xl font-light text-ivory transition-colors group-hover:text-gold-soft sm:text-2xl">
+                        {closing.title}
+                      </h3>
+                      <div className="mt-3 flex items-center justify-between border-t border-ivory/15 pt-2.5 text-[12px]">
+                        <span className="text-ivory/65">
+                          High Footfall Frontage
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 font-semibold uppercase tracking-[0.18em] text-gold-soft group-hover:text-ivory transition-colors">
+                          <span>View Details</span>
+                          <ArrowRight className="size-3 transition-transform duration-300 group-hover:translate-x-1" />
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </Reveal>
+            </div>
           )}
+
+          {/* ========================================================= */}
+          {/* 4. Bespoke Client Project Consulting VIP Tile (Col 7-12, 320px) */}
+          {/* ========================================================= */}
+          <div className="lg:col-span-6">
+            <Reveal delay={0.2} className="h-full">
+              <div className="group relative flex h-[300px] sm:h-[320px] w-full flex-col justify-between overflow-hidden rounded-xl border border-gold/40 bg-gradient-to-br from-charcoal via-charcoal to-[#181510] p-7 sm:p-8 text-ivory shadow-sm transition-all duration-500 hover:border-gold hover:shadow-[0_16px_40px_rgba(212,175,55,0.22)]">
+                {/* Ambient gold spotlight glow */}
+                <div className="pointer-events-none absolute -right-16 -top-16 size-48 rounded-full bg-gold/15 blur-2xl transition-all duration-500 group-hover:bg-gold/25" />
+
+                <div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex size-10 items-center justify-center rounded-lg border border-gold/40 bg-gold/15 text-gold shadow-[0_2px_10px_rgba(212,175,55,0.2)]">
+                      <Sparkles className="size-4.5" />
+                    </div>
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-gold">
+                      Bespoke Advisory
+                    </span>
+                  </div>
+
+                  <h3 className="mt-5 font-serif text-2xl font-light leading-snug text-ivory sm:text-[1.75rem]">
+                    Looking for a Specific Plot, Home or Commercial Parcel?
+                  </h3>
+                  <p className="mt-2.5 max-w-lg text-[13.5px] leading-relaxed text-ivory/70">
+                    We discreetly source, vet mother deeds, and negotiate unlisted residential properties and commercial plots tailored to your exact criteria.
+                  </p>
+                </div>
+
+                <div className="pt-4 border-t border-ivory/10 flex flex-wrap items-center justify-between gap-4">
+                  <span className="text-[11.5px] text-ivory/50">
+                    Confidential · Title Due Diligence · 1-on-1
+                  </span>
+                  <Link
+                    href="/contact"
+                    className="inline-flex h-11 items-center gap-2 bg-gradient-to-r from-gold-soft via-gold to-gold-deep px-5 text-[11.5px] font-semibold uppercase tracking-[0.18em] text-charcoal shadow-[0_2px_12px_rgba(212,175,55,0.3)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_4px_18px_rgba(212,175,55,0.45)] active:scale-[0.98]"
+                  >
+                    <span>Start Private Search</span>
+                    <ArrowRight className="size-3.5" />
+                  </Link>
+                </div>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </div>
     </section>

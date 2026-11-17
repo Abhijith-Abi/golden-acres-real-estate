@@ -70,6 +70,7 @@ export default function AboutPage() {
           </>
         }
         lede={brand.description}
+        backgroundImage={imagery.aboutMain}
       />
 
       {/* Story */}

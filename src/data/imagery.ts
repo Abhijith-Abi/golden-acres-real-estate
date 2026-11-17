@@ -41,6 +41,6 @@ export const propertyImagery = [
 ] as const;
 export const projectImagery = [
   u("1512917774080-9991f1c4c750", 1800),
-  u("1600585154340-be6161a56a0c", 1800),
+  u("1600607687920-4e2a09cf159d", 1800),
   u("1564013799919-ab600027ffc6", 1800),
 ] as const;

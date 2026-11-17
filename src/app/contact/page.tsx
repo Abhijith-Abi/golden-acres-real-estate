@@ -90,6 +90,7 @@ export default function ContactPage() {
           </>
         }
         lede="Call, WhatsApp or send the form — a real consultant replies, usually the same day."
+        backgroundImage={imagery.contactMain}
       />
 
       <section className="py-20 lg:py-28">

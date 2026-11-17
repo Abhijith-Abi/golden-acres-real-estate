@@ -47,7 +47,7 @@ export function ServicesSection() {
                   href="/services"
                   className="group grid grid-cols-[1fr_auto] items-start gap-x-4 gap-y-3 border-b border-charcoal/10 px-1 py-6 transition-colors duration-300 hover:bg-secondary/70 sm:grid-cols-[56px_250px_1fr_auto] sm:items-center sm:gap-8 sm:px-4 lg:py-8"
                 >
-                  <span className="hidden font-serif text-lg text-charcoal/35 sm:block">
+                  <span className="hidden font-serif text-lg text-charcoal/35 sm:col-start-1 sm:row-start-1 sm:block">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="flex items-center gap-3.5 sm:col-start-2 sm:row-start-1">
@@ -56,7 +56,7 @@ export function ServicesSection() {
                       {service.title}
                     </h3>
                   </span>
-                  <span className="row-start-1 flex size-10 items-center justify-center border border-charcoal/15 text-charcoal/60 transition-all duration-300 group-hover:border-gold-deep group-hover:bg-gold-deep group-hover:text-ivory sm:col-start-4 sm:size-11">
+                  <span className="col-start-2 row-start-1 flex size-10 items-center justify-center border border-charcoal/15 text-charcoal/60 transition-all duration-300 group-hover:border-gold-deep group-hover:bg-gold-deep group-hover:text-ivory sm:col-start-4 sm:size-11">
                     <ArrowUpRight className="size-4.5" aria-hidden />
                   </span>
                   <p className="col-span-2 text-sm leading-relaxed text-muted-foreground sm:col-span-1 sm:col-start-3 sm:row-start-1">

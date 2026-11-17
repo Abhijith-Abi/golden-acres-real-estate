@@ -52,13 +52,13 @@ export function WhyChooseUs() {
           {strengths.map((s, i) => (
             <Reveal as="li" key={s.number} delay={i * 0.08}>
               <div className="grid grid-cols-[auto_1fr] items-start gap-x-6 gap-y-3 py-8 transition-colors lg:grid-cols-[72px_240px_1fr] lg:gap-8 lg:py-10">
-                <span className="font-serif text-lg text-gold-soft/80">
+                <span className="font-serif text-lg text-gold-soft/80 lg:col-start-1 lg:row-start-1">
                   {s.number}
                 </span>
-                <h3 className="font-serif text-2xl font-light leading-snug text-ivory lg:text-[1.7rem]">
+                <h3 className="font-serif text-2xl font-light leading-snug text-ivory lg:col-start-2 lg:row-start-1 lg:text-[1.7rem]">
                   {s.title}
                 </h3>
-                <p className="col-span-2 text-sm leading-relaxed text-ivory/60 lg:col-span-1 lg:row-start-1 lg:text-[13.5px]">
+                <p className="col-span-2 text-sm leading-relaxed text-ivory/60 lg:col-span-1 lg:col-start-3 lg:row-start-1 lg:text-[13.5px]">
                   {s.copy}
                 </p>
               </div>

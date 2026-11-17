@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { enquirySchema } from "@/lib/validations/enquiry";
-import { contactSchema as contactSchemaV } from "@/lib/validations/contact";
+import { contactSchema } from "@/lib/validations/contact";
 
 /**
  * POST /api/enquiries
@@ -51,7 +51,7 @@ export async function POST(request: Request) {
   const parsed =
     kind === "enquiry"
       ? enquirySchema.safeParse(rest)
-      : contactSchemaV.safeParse(rest);
+      : contactSchema.safeParse(rest);
 
   if (!parsed.success) {
     return NextResponse.json(

@@ -2,7 +2,8 @@ import type { EnquiryPayload } from "@/lib/validations/enquiry";
 import type { ContactPayload } from "@/lib/validations/contact";
 import { contact } from "@/config/contact";
 
-export type SubmissionContext = {  kind: "enquiry" | "contact";
+export type SubmissionContext = {
+  kind: "enquiry" | "contact";
   property?: { title: string; location: string; slug: string };
   project?: { title: string; location: string };
 };

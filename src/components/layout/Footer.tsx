@@ -30,7 +30,7 @@ export function Footer() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(212,175,55,0.06)_0%,_transparent_70%)]" />
 
       {/* 1. Pre-Footer Luxury Advisory Prompt */}
-      <div className="relative border-b border-ivory/10 bg-charcoal-soft/40 backdrop-blur-sm">
+      <div className="glass-dark relative border-b border-ivory/10">
         <div className="container-site py-12 lg:py-14">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-2xl">
@@ -46,12 +46,12 @@ export function Footer() {
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3.5 sm:gap-4 shrink-0">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 shrink-0 w-full lg:w-auto">
               <a
                 href={buildWhatsAppUrl(contact.whatsapp.number, generalEnquiryMessage)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex h-12 items-center gap-2.5 bg-gradient-to-r from-gold-soft via-gold to-gold-deep px-6 text-[12px] font-semibold uppercase tracking-[0.18em] text-charcoal shadow-[0_2px_14px_rgba(212,175,55,0.3)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_4px_22px_rgba(212,175,55,0.45)] active:scale-[0.98]"
+                className="group inline-flex h-12 items-center justify-center gap-2.5 bg-gradient-to-r from-gold-soft via-gold to-gold-deep px-6 text-[12px] font-semibold uppercase tracking-[0.18em] text-charcoal shadow-[0_2px_14px_rgba(212,175,55,0.3)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_4px_22px_rgba(212,175,55,0.45)] active:scale-[0.98] w-full sm:w-auto"
               >
                 <WhatsAppIcon className="size-4" />
                 <span>WhatsApp Advisory</span>
@@ -59,7 +59,7 @@ export function Footer() {
 
               <a
                 href={`tel:${contact.phone.tel}`}
-                className="inline-flex h-12 items-center gap-2.5 border border-ivory/25 bg-charcoal-soft/60 px-6 text-[12px] font-medium uppercase tracking-[0.18em] text-ivory backdrop-blur-md transition-all duration-300 hover:border-gold hover:text-gold-soft hover:bg-charcoal active:scale-[0.98]"
+                className="inline-flex h-12 items-center justify-center gap-2.5 border border-ivory/25 bg-charcoal-soft/60 px-6 text-[12px] font-medium uppercase tracking-[0.18em] text-ivory backdrop-blur-md transition-all duration-300 hover:border-gold hover:text-gold-soft hover:bg-charcoal active:scale-[0.98] w-full sm:w-auto"
               >
                 <Phone className="size-3.5 text-gold" />
                 <span>Call {contact.phone.display}</span>
@@ -210,11 +210,11 @@ export function Footer() {
                 <span className="h-px w-6 bg-gold/40" />
               </h3>
 
-              <div className="mt-6 space-y-4">
+              <div className="mt-6 space-y-3.5">
                 {/* Primary phone */}
                 <a
                   href={`tel:${contact.phone.tel}`}
-                  className="group flex items-start gap-3 p-3 border border-ivory/10 bg-charcoal-soft/40 transition-all duration-300 hover:border-gold/60 hover:bg-charcoal-soft"
+                  className="glass-dark group flex items-start gap-3 rounded-lg p-3 transition-all duration-300 hover:border-gold/60"
                 >
                   <Phone className="size-4 text-gold mt-0.5 shrink-0 transition-transform duration-300 group-hover:scale-110" />
                   <div>
@@ -231,7 +231,7 @@ export function Footer() {
                 {contact.phoneAlt.display && (
                   <a
                     href={`tel:${contact.phoneAlt.tel}`}
-                    className="group flex items-start gap-3 p-3 border border-ivory/10 bg-charcoal-soft/40 transition-all duration-300 hover:border-gold/60 hover:bg-charcoal-soft"
+                    className="glass-dark group flex items-start gap-3 rounded-lg p-3 transition-all duration-300 hover:border-gold/60"
                   >
                     <Phone className="size-4 text-gold mt-0.5 shrink-0 transition-transform duration-300 group-hover:scale-110" />
                     <div>
@@ -246,7 +246,7 @@ export function Footer() {
                 )}
 
                 {/* Location */}
-                <div className="flex items-start gap-3 p-3 border border-ivory/10 bg-charcoal-soft/40">
+                <div className="glass-dark flex items-start gap-3 rounded-lg p-3">
                   <MapPin className="size-4 text-gold mt-0.5 shrink-0" />
                   <div>
                     <span className="block text-[10px] font-semibold uppercase tracking-[0.25em] text-ivory/40">
@@ -262,7 +262,7 @@ export function Footer() {
 
             <Link
               href="/contact"
-              className="mt-6 inline-flex h-11 items-center justify-center gap-2 border border-gold/40 bg-gold/10 px-5 text-[11.5px] font-medium uppercase tracking-[0.2em] text-gold-soft transition-all duration-300 hover:border-gold hover:bg-gold hover:text-charcoal"
+              className="glass-gold mt-6 inline-flex h-11 items-center justify-center gap-2 rounded-lg px-5 text-[11.5px] font-semibold uppercase tracking-[0.2em] text-gold-soft transition-all duration-300 hover:border-gold hover:text-charcoal hover:bg-gold"
             >
               <span>Schedule Private Consultation</span>
               <ArrowRight className="size-3.5" />

@@ -112,7 +112,7 @@ export default function AboutPage() {
             {/* Mission / vision */}
             <div className="mt-12 grid gap-6 sm:grid-cols-2">
               <Reveal>
-                <div className="h-full border border-charcoal/10 bg-card p-7">
+                <div className="glass-light h-full rounded-xl border border-charcoal/10 p-7 shadow-sm transition-all duration-300 hover:border-gold/50 hover:shadow-[0_8px_30px_rgba(212,175,55,0.1)]">
                   <Eye className="size-6 text-gold-deep" aria-hidden />
                   <h3 className="mt-4 font-serif text-xl font-light text-charcoal">Our mission</h3>
                   <p className="mt-3 text-[13.5px] leading-relaxed text-muted-foreground">
@@ -122,7 +122,7 @@ export default function AboutPage() {
                 </div>
               </Reveal>
               <Reveal delay={0.1}>
-                <div className="h-full border border-charcoal/10 bg-card p-7">
+                <div className="glass-light h-full rounded-xl border border-charcoal/10 p-7 shadow-sm transition-all duration-300 hover:border-gold/50 hover:shadow-[0_8px_30px_rgba(212,175,55,0.1)]">
                   <Compass className="size-6 text-gold-deep" aria-hidden />
                   <h3 className="mt-4 font-serif text-xl font-light text-charcoal">Our vision</h3>
                   <p className="mt-3 text-[13.5px] leading-relaxed text-muted-foreground">
@@ -160,7 +160,7 @@ export default function AboutPage() {
             </ImageReveal>
             <Reveal
               delay={0.3}
-              className="absolute -right-2 -top-6 bg-charcoal px-6 py-5 text-ivory shadow-xl shadow-charcoal/25 lg:-right-6"
+              className="glass-dark absolute -right-2 -top-6 rounded-xl px-6 py-5 text-ivory shadow-xl lg:-right-6 border border-white/20"
             >
               <KeyRound className="size-5 text-gold-soft" aria-hidden />
               <p className="mt-2 font-serif text-lg italic text-gold-soft">
@@ -184,10 +184,10 @@ export default function AboutPage() {
               </span>
             }
           />
-          <div className="mt-14 grid gap-px overflow-hidden border border-ivory/[0.12] bg-ivory/[0.12] sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {values.map((v, i) => (
-              <Reveal key={v.title} delay={i * 0.07} className="bg-charcoal">
-                <div className="group h-full p-8 transition-colors duration-300 hover:bg-charcoal-soft">
+              <Reveal key={v.title} delay={i * 0.07} className="h-full">
+                <div className="glass-dark group h-full rounded-xl p-8 transition-all duration-300 hover:border-gold/50 hover:shadow-[0_12px_36px_rgba(212,175,55,0.15)]">
                   <v.icon className="size-6 text-gold-soft" aria-hidden />
                   <h3 className="mt-5 font-serif text-xl font-light leading-snug">{v.title}</h3>
                   <p className="mt-3 text-[13.5px] leading-relaxed text-ivory/60">{v.copy}</p>

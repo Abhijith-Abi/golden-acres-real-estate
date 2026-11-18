@@ -101,7 +101,7 @@ export default function ContactPage() {
             <h2 className="mt-4 font-serif text-3xl font-light text-charcoal sm:text-4xl">
               Tell us what you&apos;re looking for
             </h2>
-            <div className="mt-10">
+            <div className="mt-10 glass-light rounded-2xl p-7 sm:p-9 border border-charcoal/10 shadow-[0_10px_35px_rgba(0,0,0,0.04)]">
               <ContactForm />
             </div>
           </Reveal>
@@ -110,8 +110,8 @@ export default function ContactPage() {
           <div className="space-y-6">
             {channels.map((ch, i) => (
               <Reveal key={ch.title} delay={i * 0.08}>
-                <div className="flex gap-5 border border-charcoal/10 bg-card p-7">
-                  <span className="flex size-12 shrink-0 items-center justify-center border border-gold/40 text-gold-deep">
+                <div className="glass-light rounded-xl flex gap-5 border border-charcoal/10 p-7 transition-all duration-300 hover:border-gold/50 hover:shadow-[0_10px_30px_rgba(212,175,55,0.1)]">
+                  <span className="flex size-12 shrink-0 items-center justify-center rounded-lg border border-gold/40 bg-gold/10 text-gold-deep shadow-sm">
                     <ch.icon className="size-5" aria-hidden />
                   </span>
                   <div>
@@ -142,10 +142,10 @@ export default function ContactPage() {
                 href={social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-between gap-5 bg-charcoal p-7 text-ivory"
+                className="glass-dark group flex items-center justify-between gap-5 rounded-xl p-7 text-ivory transition-all duration-300 hover:border-gold/50 hover:shadow-[0_12px_36px_rgba(212,175,55,0.18)]"
               >
                 <div className="flex items-center gap-5">
-                  <span className="flex size-12 items-center justify-center border border-ivory/25 text-gold-soft">
+                  <span className="flex size-12 items-center justify-center rounded-lg border border-ivory/25 bg-gold/15 text-gold-soft shadow-sm">
                     <InstagramIcon className="size-5" aria-hidden />
                   </span>
                   <div>
@@ -160,7 +160,7 @@ export default function ContactPage() {
             </Reveal>
 
             <Reveal delay={0.25}>
-              <div className="border border-charcoal/10 bg-secondary/60 p-7">
+              <div className="glass-light rounded-xl border border-charcoal/10 p-7 shadow-sm">
                 <h3 className="text-[11px] font-semibold uppercase tracking-[0.24em] text-charcoal/60">
                   Areas we serve
                 </h3>
@@ -168,7 +168,7 @@ export default function ContactPage() {
                   {brand.serviceAreas.map((area) => (
                     <span
                       key={area}
-                      className="border border-charcoal/10 bg-card px-3 py-1.5 text-[12px] text-charcoal/75"
+                      className="rounded-md border border-charcoal/10 bg-white/70 backdrop-blur-sm px-3 py-1.5 text-[12px] text-charcoal/75 shadow-xs"
                     >
                       {area}
                     </span>

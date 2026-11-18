@@ -120,7 +120,7 @@ export function PropertiesExplorer({
   return (
     <div>
       {/* Filter bar */}
-      <div className="border border-charcoal/10 bg-card p-4 sm:p-5">
+      <div className="glass-light rounded-xl border border-charcoal/10 p-5 sm:p-6 shadow-[0_8px_32px_rgba(0,0,0,0.05)]">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
           <div className="relative flex-1">
             <Search className="absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" aria-hidden />

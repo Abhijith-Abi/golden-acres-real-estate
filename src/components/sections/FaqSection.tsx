@@ -32,7 +32,7 @@ export function FaqSection({
         <Reveal delay={0.1}>
           <div className="divide-y divide-charcoal/10 border-y border-charcoal/10">
             {faqs.map((faq) => (
-              <details key={faq.question} className="group py-5">
+              <details key={faq.question} className="group py-5 transition-all duration-300 open:glass-light open:rounded-xl open:border open:border-charcoal/10 open:p-6 open:my-3 open:shadow-xs">
                 <summary className="flex cursor-pointer list-none items-start justify-between gap-6 text-left [&::-webkit-details-marker]:hidden">
                   <h3 className="font-serif text-lg font-light leading-snug text-charcoal sm:text-xl">
                     {faq.question}

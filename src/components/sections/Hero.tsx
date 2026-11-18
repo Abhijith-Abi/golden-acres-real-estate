@@ -108,11 +108,11 @@ export function Hero() {
         {/* Luxury CTA Actions */}
         <motion.div
           variants={fadeUpVariant}
-          className="mt-9 flex flex-wrap items-center gap-4"
+          className="mt-8 sm:mt-9 flex flex-col sm:flex-row sm:items-center gap-3.5 sm:gap-4 w-full sm:w-auto"
         >
           <Link
             href="/properties"
-            className="group relative inline-flex h-14 items-center justify-center gap-3 overflow-hidden bg-gradient-to-r from-gold-soft via-gold to-gold-deep px-8 text-[12px] font-semibold uppercase tracking-[0.2em] text-charcoal shadow-[0_4px_22px_rgba(212,175,55,0.35)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_6px_28px_rgba(212,175,55,0.5)] active:scale-[0.98]"
+            className="group relative inline-flex h-13 sm:h-14 items-center justify-center gap-3 overflow-hidden bg-gradient-to-r from-gold-soft via-gold to-gold-deep px-8 text-[11.5px] sm:text-[12px] font-semibold uppercase tracking-[0.2em] text-charcoal shadow-[0_4px_22px_rgba(212,175,55,0.35)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_6px_28px_rgba(212,175,55,0.5)] active:scale-[0.98] w-full sm:w-auto"
           >
             <span className="relative z-10">Explore Properties</span>
             <span
@@ -126,7 +126,7 @@ export function Hero() {
 
           <Link
             href="/contact"
-            className="inline-flex h-14 items-center justify-center gap-3 border border-ivory/30 bg-charcoal/40 px-8 text-[12px] font-medium uppercase tracking-[0.2em] text-ivory backdrop-blur-md transition-all duration-300 hover:border-gold hover:bg-charcoal/70 hover:text-gold-soft hover:scale-[1.02] active:scale-[0.98]"
+            className="inline-flex h-13 sm:h-14 items-center justify-center gap-3 border border-ivory/30 bg-charcoal/40 px-8 text-[11.5px] sm:text-[12px] font-medium uppercase tracking-[0.2em] text-ivory backdrop-blur-md transition-all duration-300 hover:border-gold hover:bg-charcoal/70 hover:text-gold-soft hover:scale-[1.02] active:scale-[0.98] w-full sm:w-auto"
           >
             Enquire Now
           </Link>

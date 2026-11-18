@@ -189,11 +189,11 @@ export default function ServicesPage() {
             }
             lede="The same four steps, whether you're buying your first flat or placing a larger investment."
           />
-          <ol className="mt-14 grid gap-px overflow-hidden border border-ivory/[0.12] bg-ivory/[0.12] sm:grid-cols-2 lg:grid-cols-4">
+          <ol className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {processSteps.map((step, i) => (
-              <Reveal as="li" key={step.title} delay={i * 0.07} className="bg-charcoal">
-                <div className="h-full p-8 transition-colors duration-300 hover:bg-charcoal-soft">
-                  <span className="font-serif text-4xl font-light text-gold-soft/80">
+              <Reveal as="li" key={step.title} delay={i * 0.07} className="h-full">
+                <div className="glass-dark group h-full rounded-xl p-8 transition-all duration-300 hover:border-gold/50 hover:shadow-[0_12px_36px_rgba(212,175,55,0.15)]">
+                  <span className="font-serif text-4xl font-light text-gold-soft/80 group-hover:text-gold transition-colors">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <h3 className="mt-4 font-serif text-xl font-light leading-snug">{step.title}</h3>

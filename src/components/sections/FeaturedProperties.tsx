@@ -62,7 +62,7 @@ export function FeaturedProperties() {
             <Reveal className="h-full">
               <Link
                 href={`/properties/${lead.slug}`}
-                className="group relative flex h-[480px] sm:h-[520px] lg:h-[540px] w-full flex-col justify-between overflow-hidden rounded-xl border border-charcoal/10 bg-charcoal shadow-sm transition-all duration-500 hover:border-gold/60 hover:shadow-[0_16px_40px_rgba(212,175,55,0.18)]"
+                className="group relative flex h-[500px] sm:h-[520px] lg:h-[540px] w-full flex-col justify-between overflow-hidden rounded-xl border border-charcoal/10 bg-charcoal shadow-sm transition-all duration-500 hover:border-gold/60 hover:shadow-[0_16px_40px_rgba(212,175,55,0.18)]"
               >
                 {/* Full-bleed Photo */}
                 <Image
@@ -79,54 +79,54 @@ export function FeaturedProperties() {
                 <div className="absolute inset-0 bg-gradient-to-r from-charcoal/70 via-transparent to-transparent" />
 
                 {/* Top Badges */}
-                <div className="relative z-10 flex items-center justify-between p-6 sm:p-8">
-                  <div className="flex items-center gap-2">
-                    <span className="rounded-md bg-charcoal/85 px-3.5 py-1.5 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-ivory backdrop-blur-md border border-ivory/15">
+                <div className="relative z-10 flex items-center justify-between gap-2 p-4 sm:p-7 lg:p-8">
+                  <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                    <span className="glass-badge rounded-md px-2.5 py-1 text-[9.5px] sm:px-3.5 sm:py-1.5 sm:text-[10.5px] font-semibold uppercase tracking-[0.18em] sm:tracking-[0.22em] text-ivory whitespace-nowrap shrink-0">
                       {categoryNames[lead.category] || "Residence"}
                     </span>
-                    <span className="rounded-md bg-gold/90 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-charcoal backdrop-blur-sm">
+                    <span className="rounded-md bg-gold/90 px-2 py-1 text-[9px] sm:px-3 sm:py-1.5 sm:text-[10px] font-semibold uppercase tracking-[0.16em] sm:tracking-[0.22em] text-charcoal backdrop-blur-sm whitespace-nowrap shrink-0 shadow-sm">
                       {lead.location}
                     </span>
                   </div>
-                  <span className="rounded-full bg-ivory/90 px-3 py-1 text-[9px] font-medium uppercase tracking-[0.2em] text-charcoal/80 backdrop-blur-md">
+                  <span className="hidden sm:inline-flex glass-badge rounded-full px-3 py-1 text-[9px] font-medium uppercase tracking-[0.2em] text-ivory/80 whitespace-nowrap shrink-0">
                     Featured Residence
                   </span>
                 </div>
 
                 {/* Bottom Property Specs Card */}
-                <div className="relative z-10 p-6 sm:p-8">
-                  <div className="rounded-lg border border-ivory/15 bg-charcoal/80 p-5 backdrop-blur-md transition-all duration-300 group-hover:border-gold/40 sm:p-6">
-                    <p className="flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.22em] text-gold-soft">
+                <div className="relative z-10 p-4 sm:p-7 lg:p-8">
+                  <div className="glass-dark rounded-xl p-4 sm:p-6 transition-all duration-300 group-hover:border-gold/50 group-hover:shadow-[0_16px_40px_rgba(212,175,55,0.2)]">
+                    <p className="flex items-center gap-1.5 text-[10.5px] sm:text-[11px] font-medium uppercase tracking-[0.2em] text-gold-soft">
                       <MapPin className="size-3.5 text-gold shrink-0" />
                       {lead.location}, Trivandrum
                     </p>
-                    <h3 className="mt-2 font-serif text-2xl font-light text-ivory transition-colors group-hover:text-gold-soft sm:text-3xl">
+                    <h3 className="mt-1.5 sm:mt-2 font-serif text-xl sm:text-2xl lg:text-3xl font-light text-ivory transition-colors group-hover:text-gold-soft">
                       {lead.title}
                     </h3>
 
-                    <div className="mt-4 flex flex-wrap items-center justify-between gap-4 border-t border-ivory/15 pt-4">
-                      <div className="flex items-center gap-4 sm:gap-6 text-[13px] text-ivory/80">
+                    <div className="mt-3.5 sm:mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-ivory/15 pt-3 sm:pt-4">
+                      <div className="flex flex-wrap items-center gap-3 sm:gap-6 text-[12px] sm:text-[13px] text-ivory/80">
                         {lead.bedrooms && (
-                          <span className="inline-flex items-center gap-1.5">
-                            <BedDouble className="size-4 text-gold-soft" />
+                          <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
+                            <BedDouble className="size-3.5 sm:size-4 text-gold-soft shrink-0" />
                             {lead.bedrooms} Beds
                           </span>
                         )}
                         {lead.bathrooms && (
-                          <span className="inline-flex items-center gap-1.5">
-                            <Bath className="size-4 text-gold-soft" />
+                          <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
+                            <Bath className="size-3.5 sm:size-4 text-gold-soft shrink-0" />
                             {lead.bathrooms} Baths
                           </span>
                         )}
-                        <span className="inline-flex items-center gap-1.5">
-                          <Ruler className="size-4 text-gold-soft" />
+                        <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
+                          <Ruler className="size-3.5 sm:size-4 text-gold-soft shrink-0" />
                           {lead.area.value.toLocaleString("en-IN")} {lead.area.unit}
                         </span>
                       </div>
 
-                      <span className="inline-flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.18em] text-gold-soft group-hover:text-ivory transition-colors">
+                      <span className="inline-flex items-center gap-1.5 text-[11.5px] font-semibold uppercase tracking-[0.18em] text-gold-soft group-hover:text-ivory transition-colors whitespace-nowrap shrink-0">
                         <span>Explore Property</span>
-                        <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+                        <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" />
                       </span>
                     </div>
                   </div>
@@ -143,7 +143,7 @@ export function FeaturedProperties() {
             <Reveal className="h-full">
               <Link
                 href={`/properties/${p2.slug}`}
-                className="group relative flex h-[250px] sm:h-[255px] w-full flex-col justify-between overflow-hidden rounded-xl border border-charcoal/10 bg-charcoal shadow-sm transition-all duration-500 hover:border-gold/60 hover:shadow-[0_12px_30px_rgba(212,175,55,0.15)]"
+                className="group relative flex h-[260px] sm:h-[255px] w-full flex-col justify-between overflow-hidden rounded-xl border border-charcoal/10 bg-charcoal shadow-sm transition-all duration-500 hover:border-gold/60 hover:shadow-[0_12px_30px_rgba(212,175,55,0.15)]"
               >
                 <Image
                   src={p2.images[0]}
@@ -155,33 +155,33 @@ export function FeaturedProperties() {
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal/95 via-charcoal/50 to-charcoal/40" />
 
                 {/* Top Badges */}
-                <div className="relative z-10 flex items-center justify-between p-5">
-                  <span className="rounded-md bg-charcoal/80 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-ivory backdrop-blur-md border border-ivory/15">
+                <div className="relative z-10 flex items-center justify-between p-4 sm:p-5">
+                  <span className="rounded-md bg-charcoal/80 px-2.5 py-1 text-[9.5px] sm:text-[10px] font-semibold uppercase tracking-[0.18em] text-ivory backdrop-blur-md border border-ivory/15 whitespace-nowrap shrink-0">
                     {categoryNames[p2.category]}
                   </span>
-                  <span className="rounded-md bg-gold-soft px-2.5 py-1 text-[9.5px] font-semibold uppercase tracking-[0.18em] text-charcoal">
+                  <span className="rounded-md bg-gold-soft px-2.5 py-1 text-[9px] sm:text-[9.5px] font-semibold uppercase tracking-[0.18em] text-charcoal whitespace-nowrap shrink-0">
                     {p2.location}
                   </span>
                 </div>
 
                 {/* Bottom Details */}
-                <div className="relative z-10 p-5">
-                  <p className="flex items-center gap-1.5 text-[10.5px] font-medium uppercase tracking-[0.2em] text-gold-soft">
-                    <MapPin className="size-3 text-gold" />
+                <div className="relative z-10 p-4 sm:p-5">
+                  <p className="flex items-center gap-1.5 text-[10px] sm:text-[10.5px] font-medium uppercase tracking-[0.2em] text-gold-soft">
+                    <MapPin className="size-3 text-gold shrink-0" />
                     {p2.location}, Trivandrum
                   </p>
-                  <h3 className="mt-1 font-serif text-xl font-light text-ivory transition-colors group-hover:text-gold-soft sm:text-[22px]">
+                  <h3 className="mt-1 font-serif text-lg sm:text-xl font-light text-ivory transition-colors group-hover:text-gold-soft lg:text-[22px]">
                     {p2.title}
                   </h3>
-                  <div className="mt-3 flex items-center justify-between text-[12.5px] text-ivory/75 border-t border-ivory/15 pt-2.5">
-                    <div className="flex items-center gap-3">
+                  <div className="mt-2.5 sm:mt-3 flex items-center justify-between text-[11.5px] sm:text-[12.5px] text-ivory/75 border-t border-ivory/15 pt-2 sm:pt-2.5">
+                    <div className="flex items-center gap-2 sm:gap-3">
                       <span>{p2.bedrooms} Beds</span>
                       <span>·</span>
                       <span>{p2.bathrooms} Baths</span>
                       <span>·</span>
                       <span>{p2.area.value} {p2.area.unit}</span>
                     </div>
-                    <span className="inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-soft group-hover:text-ivory transition-colors">
+                    <span className="inline-flex items-center gap-1 text-[10.5px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-soft group-hover:text-ivory transition-colors whitespace-nowrap shrink-0">
                       <span>View</span>
                       <ArrowRight className="size-3 transition-transform duration-300 group-hover:translate-x-1" />
                     </span>
@@ -194,7 +194,7 @@ export function FeaturedProperties() {
             <Reveal className="h-full">
               <Link
                 href={`/properties/${p3.slug}`}
-                className="group relative flex h-[250px] sm:h-[255px] w-full flex-col justify-between overflow-hidden rounded-xl border border-charcoal/10 bg-charcoal shadow-sm transition-all duration-500 hover:border-gold/60 hover:shadow-[0_12px_30px_rgba(212,175,55,0.15)]"
+                className="group relative flex h-[260px] sm:h-[255px] w-full flex-col justify-between overflow-hidden rounded-xl border border-charcoal/10 bg-charcoal shadow-sm transition-all duration-500 hover:border-gold/60 hover:shadow-[0_12px_30px_rgba(212,175,55,0.15)]"
               >
                 <Image
                   src={p3.images[0]}
@@ -206,31 +206,31 @@ export function FeaturedProperties() {
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal/95 via-charcoal/50 to-charcoal/40" />
 
                 {/* Top Badges */}
-                <div className="relative z-10 flex items-center justify-between p-5">
-                  <span className="rounded-md bg-charcoal/80 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-ivory backdrop-blur-md border border-ivory/15">
+                <div className="relative z-10 flex items-center justify-between p-4 sm:p-5">
+                  <span className="rounded-md bg-charcoal/80 px-2.5 py-1 text-[9.5px] sm:text-[10px] font-semibold uppercase tracking-[0.18em] text-ivory backdrop-blur-md border border-ivory/15 whitespace-nowrap shrink-0">
                     {categoryNames[p3.category]}
                   </span>
-                  <span className="rounded-md bg-gold-soft px-2.5 py-1 text-[9.5px] font-semibold uppercase tracking-[0.18em] text-charcoal">
+                  <span className="rounded-md bg-gold-soft px-2.5 py-1 text-[9px] sm:text-[9.5px] font-semibold uppercase tracking-[0.18em] text-charcoal whitespace-nowrap shrink-0">
                     {p3.location}
                   </span>
                 </div>
 
                 {/* Bottom Details */}
-                <div className="relative z-10 p-5">
-                  <p className="flex items-center gap-1.5 text-[10.5px] font-medium uppercase tracking-[0.2em] text-gold-soft">
-                    <MapPin className="size-3 text-gold" />
+                <div className="relative z-10 p-4 sm:p-5">
+                  <p className="flex items-center gap-1.5 text-[10px] sm:text-[10.5px] font-medium uppercase tracking-[0.2em] text-gold-soft">
+                    <MapPin className="size-3 text-gold shrink-0" />
                     {p3.location}, Trivandrum
                   </p>
-                  <h3 className="mt-1 font-serif text-xl font-light text-ivory transition-colors group-hover:text-gold-soft sm:text-[22px]">
+                  <h3 className="mt-1 font-serif text-lg sm:text-xl font-light text-ivory transition-colors group-hover:text-gold-soft lg:text-[22px]">
                     {p3.title}
                   </h3>
-                  <div className="mt-3 flex items-center justify-between text-[12.5px] text-ivory/75 border-t border-ivory/15 pt-2.5">
-                    <div className="flex items-center gap-3">
+                  <div className="mt-2.5 sm:mt-3 flex items-center justify-between text-[11.5px] sm:text-[12.5px] text-ivory/75 border-t border-ivory/15 pt-2 sm:pt-2.5">
+                    <div className="flex items-center gap-2 sm:gap-3">
                       <span>{p3.area.value} {p3.area.unit}</span>
                       <span>·</span>
                       <span>Road Frontage</span>
                     </div>
-                    <span className="inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-soft group-hover:text-ivory transition-colors">
+                    <span className="inline-flex items-center gap-1 text-[10.5px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-soft group-hover:text-ivory transition-colors whitespace-nowrap shrink-0">
                       <span>View</span>
                       <ArrowRight className="size-3 transition-transform duration-300 group-hover:translate-x-1" />
                     </span>
@@ -260,26 +260,26 @@ export function FeaturedProperties() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal/95 via-charcoal/50 to-charcoal/35" />
 
-                <div className="relative z-10 flex items-center justify-between p-5">
-                  <span className="rounded-md bg-charcoal/80 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-ivory backdrop-blur-md border border-ivory/15">
+                <div className="relative z-10 flex items-center justify-between p-4 sm:p-5">
+                  <span className="rounded-md bg-charcoal/80 px-2.5 py-1 text-[9.5px] sm:text-[10px] font-semibold uppercase tracking-[0.18em] text-ivory backdrop-blur-md border border-ivory/15 whitespace-nowrap shrink-0">
                     {categoryNames[p4.category]}
                   </span>
-                  <span className="rounded-md bg-gold-soft px-2.5 py-1 text-[9.5px] font-semibold uppercase tracking-[0.18em] text-charcoal">
+                  <span className="rounded-md bg-gold-soft px-2.5 py-1 text-[9px] sm:text-[9.5px] font-semibold uppercase tracking-[0.18em] text-charcoal whitespace-nowrap shrink-0">
                     {p4.location}
                   </span>
                 </div>
 
-                <div className="relative z-10 p-5">
-                  <p className="flex items-center gap-1.5 text-[10.5px] font-medium uppercase tracking-[0.2em] text-gold-soft">
-                    <MapPin className="size-3 text-gold" />
+                <div className="relative z-10 p-4 sm:p-5">
+                  <p className="flex items-center gap-1.5 text-[10px] sm:text-[10.5px] font-medium uppercase tracking-[0.2em] text-gold-soft">
+                    <MapPin className="size-3 text-gold shrink-0" />
                     {p4.location}, Trivandrum
                   </p>
                   <h3 className="mt-1 font-serif text-lg font-light text-ivory transition-colors group-hover:text-gold-soft sm:text-xl">
                     {p4.title}
                   </h3>
-                  <div className="mt-3 flex items-center justify-between text-[12px] text-ivory/75 border-t border-ivory/15 pt-2.5">
+                  <div className="mt-2.5 sm:mt-3 flex items-center justify-between text-[11.5px] sm:text-[12px] text-ivory/75 border-t border-ivory/15 pt-2 sm:pt-2.5">
                     <span>{p4.area.value} {p4.area.unit} · Lake View</span>
-                    <span className="inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-soft group-hover:text-ivory transition-colors">
+                    <span className="inline-flex items-center gap-1 text-[10.5px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-soft group-hover:text-ivory transition-colors whitespace-nowrap shrink-0">
                       <span>Explore</span>
                       <ArrowRight className="size-3 transition-transform duration-300 group-hover:translate-x-1" />
                     </span>
@@ -305,26 +305,26 @@ export function FeaturedProperties() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal/95 via-charcoal/50 to-charcoal/35" />
 
-                <div className="relative z-10 flex items-center justify-between p-5">
-                  <span className="rounded-md bg-charcoal/80 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-ivory backdrop-blur-md border border-ivory/15">
+                <div className="relative z-10 flex items-center justify-between p-4 sm:p-5">
+                  <span className="rounded-md bg-charcoal/80 px-2.5 py-1 text-[9.5px] sm:text-[10px] font-semibold uppercase tracking-[0.18em] text-ivory backdrop-blur-md border border-ivory/15 whitespace-nowrap shrink-0">
                     {categoryNames[p5.category]}
                   </span>
-                  <span className="rounded-md bg-gold-soft px-2.5 py-1 text-[9.5px] font-semibold uppercase tracking-[0.18em] text-charcoal">
+                  <span className="rounded-md bg-gold-soft px-2.5 py-1 text-[9px] sm:text-[9.5px] font-semibold uppercase tracking-[0.18em] text-charcoal whitespace-nowrap shrink-0">
                     {p5.location}
                   </span>
                 </div>
 
-                <div className="relative z-10 p-5">
-                  <p className="flex items-center gap-1.5 text-[10.5px] font-medium uppercase tracking-[0.2em] text-gold-soft">
-                    <MapPin className="size-3 text-gold" />
+                <div className="relative z-10 p-4 sm:p-5">
+                  <p className="flex items-center gap-1.5 text-[10px] sm:text-[10.5px] font-medium uppercase tracking-[0.2em] text-gold-soft">
+                    <MapPin className="size-3 text-gold shrink-0" />
                     {p5.location}, Trivandrum
                   </p>
                   <h3 className="mt-1 font-serif text-lg font-light text-ivory transition-colors group-hover:text-gold-soft sm:text-xl">
                     {p5.title}
                   </h3>
-                  <div className="mt-3 flex items-center justify-between text-[12px] text-ivory/75 border-t border-ivory/15 pt-2.5">
+                  <div className="mt-2.5 sm:mt-3 flex items-center justify-between text-[11.5px] sm:text-[12px] text-ivory/75 border-t border-ivory/15 pt-2 sm:pt-2.5">
                     <span>{p5.bedrooms} Beds · {p5.area.value} {p5.area.unit}</span>
-                    <span className="inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-soft group-hover:text-ivory transition-colors">
+                    <span className="inline-flex items-center gap-1 text-[10.5px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-soft group-hover:text-ivory transition-colors whitespace-nowrap shrink-0">
                       <span>Explore</span>
                       <ArrowRight className="size-3 transition-transform duration-300 group-hover:translate-x-1" />
                     </span>
@@ -339,35 +339,35 @@ export function FeaturedProperties() {
             <Reveal className="h-full">
               <Link
                 href="/properties"
-                className="group relative flex h-[280px] sm:h-[300px] w-full flex-col justify-between overflow-hidden rounded-xl border border-gold/40 bg-gradient-to-br from-charcoal via-charcoal to-[#181510] p-7 text-ivory shadow-sm transition-all duration-500 hover:border-gold hover:shadow-[0_16px_40px_rgba(212,175,55,0.25)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+                className="glass-gold group relative flex h-auto min-h-[280px] sm:h-[300px] w-full flex-col justify-between overflow-hidden rounded-xl p-6 sm:p-7 text-ivory shadow-sm transition-all duration-500 hover:border-gold hover:shadow-[0_16px_40px_rgba(212,175,55,0.25)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
               >
                 {/* Ambient gold spotlight inside VIP tile */}
                 <div className="pointer-events-none absolute -right-16 -top-16 size-44 rounded-full bg-gold/15 blur-2xl transition-all duration-500 group-hover:bg-gold/25" />
 
                 <div>
                   <div className="flex items-center justify-between">
-                    <div className="flex size-10 items-center justify-center rounded-lg border border-gold/40 bg-gold/15 text-gold shadow-[0_2px_10px_rgba(212,175,55,0.2)]">
-                      <Sparkles className="size-4.5" />
+                    <div className="flex size-9 sm:size-10 items-center justify-center rounded-lg border border-gold/40 bg-gold/15 text-gold shadow-[0_2px_10px_rgba(212,175,55,0.2)]">
+                      <Sparkles className="size-4 sm:size-4.5" />
                     </div>
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-gold">
+                    <span className="text-[9.5px] sm:text-[10px] font-semibold uppercase tracking-[0.22em] sm:tracking-[0.25em] text-gold whitespace-nowrap">
                       100+ Verified Listings
                     </span>
                   </div>
 
-                  <h3 className="mt-5 font-serif text-2xl font-light leading-snug text-ivory group-hover:text-gold-soft transition-colors">
+                  <h3 className="mt-4 sm:mt-5 font-serif text-xl sm:text-2xl font-light leading-snug text-ivory group-hover:text-gold-soft transition-colors">
                     Browse the Complete Portfolio
                   </h3>
-                  <p className="mt-2 text-[13px] leading-relaxed text-ivory/65">
+                  <p className="mt-2 text-[12.5px] sm:text-[13px] leading-relaxed text-ivory/65">
                     Filter houses, apartments, plots, and commercial units across 9 prime Trivandrum corridors.
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-ivory/10 flex items-center justify-between">
-                  <span className="text-[12px] font-semibold uppercase tracking-[0.18em] text-gold-soft group-hover:text-ivory transition-colors">
+                <div className="pt-4 border-t border-ivory/10 flex items-center justify-between mt-4">
+                  <span className="text-[11.5px] sm:text-[12px] font-semibold uppercase tracking-[0.18em] text-gold-soft group-hover:text-ivory transition-colors whitespace-nowrap">
                     Explore All Properties
                   </span>
-                  <div className="flex size-8 items-center justify-center rounded-full bg-gold/20 text-gold transition-transform duration-300 group-hover:translate-x-1 group-hover:bg-gold group-hover:text-charcoal">
-                    <ArrowRight className="size-4" />
+                  <div className="flex size-7 sm:size-8 items-center justify-center rounded-full bg-gold/20 text-gold transition-transform duration-300 group-hover:translate-x-1 group-hover:bg-gold group-hover:text-charcoal shrink-0">
+                    <ArrowRight className="size-3.5 sm:size-4" />
                   </div>
                 </div>
               </Link>

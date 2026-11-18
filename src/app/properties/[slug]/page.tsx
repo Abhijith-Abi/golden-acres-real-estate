@@ -203,7 +203,7 @@ export default async function PropertyDetailsPage({
             <PropertyGallery property={property} />
 
             {/* Price + quick facts bar */}
-            <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border border-charcoal/10 bg-card px-6 py-5">
+            <div className="glass-light mt-8 flex flex-wrap items-center justify-between gap-4 rounded-xl border border-charcoal/10 p-6 shadow-sm">
               <div>
                 <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
                   Asking price
@@ -258,7 +258,7 @@ export default async function PropertyDetailsPage({
               <h2 className="font-serif text-2xl font-light text-charcoal sm:text-3xl">
                 Specifications
               </h2>
-              <dl className="mt-5 grid grid-cols-1 border border-charcoal/10 bg-card sm:grid-cols-2">
+              <dl className="glass-light mt-5 grid grid-cols-1 overflow-hidden rounded-xl border border-charcoal/10 sm:grid-cols-2">
                 {property.specifications.map((spec) => (
                   <div
                     key={spec.label}
@@ -331,7 +331,7 @@ export default async function PropertyDetailsPage({
 
           {/* Right: sticky enquiry panel */}
           <aside id="enquiry" className="min-w-0 scroll-mt-28 lg:sticky lg:top-28 lg:self-start">
-            <div className="border border-charcoal/10 bg-card p-6 sm:p-8">
+            <div className="glass-light rounded-xl border border-gold/30 p-6 sm:p-8 shadow-[0_12px_40px_rgba(212,175,55,0.08)]">
               <p className="eyebrow">Enquire</p>
               <h2 className="mt-3 font-serif text-2xl font-light leading-snug text-charcoal">
                 Ask about this property

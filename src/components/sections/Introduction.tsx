@@ -64,7 +64,7 @@ export function Introduction() {
           {/* Overlapping brand card */}
           <Reveal
             delay={0.3}
-            className="absolute -bottom-8 right-0 bg-charcoal px-7 py-6 text-ivory shadow-xl shadow-charcoal/20 sm:right-8"
+            className="glass-dark absolute -bottom-8 right-0 rounded-xl px-7 py-6 text-ivory sm:right-8 shadow-[0_16px_40px_rgba(0,0,0,0.35)] border border-white/20"
           >
             <p className="font-serif text-2xl font-light italic text-gold-soft">
               Golden Acres

@@ -57,24 +57,24 @@ export function PropertyCard({
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.045]"
         />
         {/* Category + status rail */}
-        <div className="absolute left-0 top-0 flex flex-col items-start">
-          <span className="bg-charcoal/80 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-ivory backdrop-blur-sm">
+        <div className="absolute left-3 top-3 flex flex-wrap items-center gap-2">
+          <span className="glass-badge rounded-md px-3 py-1.5 text-[9.5px] font-semibold uppercase tracking-[0.2em] text-ivory">
             {categoryLabels[category]}
           </span>
           {status !== "available" && (
-            <span className="mt-2 bg-gold-soft px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-charcoal">
+            <span className="rounded-md bg-gold/90 px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.2em] text-charcoal backdrop-blur-sm shadow-sm">
               {statusLabels[status]}
             </span>
           )}
         </div>
         {sample && (
-          <span className="absolute right-3 top-3 rounded-full bg-ivory/90 px-3 py-1 text-[9px] font-medium uppercase tracking-[0.18em] text-charcoal/70 backdrop-blur-sm">
+          <span className="absolute right-3 top-3 rounded-full bg-ivory/85 px-3 py-1 text-[9px] font-medium uppercase tracking-[0.18em] text-charcoal/80 backdrop-blur-md border border-charcoal/10 shadow-sm">
             Sample listing
           </span>
         )}
       </div>
 
-      <div className={cn("border border-t-0 border-charcoal/10 bg-card p-6", list && "border-l-0 border-t flex flex-col justify-center")}>
+      <div className={cn("glass-light border border-t-0 border-charcoal/10 p-6 transition-all duration-300 group-hover:border-gold/50 group-hover:shadow-[0_12px_32px_rgba(212,175,55,0.12)]", list && "border-l-0 border-t flex flex-col justify-center")}>
         <p className="flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.22em] text-muted-foreground">
           <MapPin className="size-3.5 text-gold-deep" />
           {location}, Trivandrum

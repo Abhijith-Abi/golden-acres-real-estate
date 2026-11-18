@@ -76,7 +76,7 @@ export function PageHero({
           <Reveal>
             <nav
               aria-label="Breadcrumb"
-              className="mb-6 flex items-center text-[11px] font-medium uppercase tracking-[0.24em] text-ivory/50"
+              className="glass-badge mb-6 inline-flex items-center rounded-full px-4 py-1.5 text-[10.5px] font-medium uppercase tracking-[0.22em] text-ivory/70"
             >
               <Link href="/" className="transition-colors hover:text-gold-soft">
                 Home

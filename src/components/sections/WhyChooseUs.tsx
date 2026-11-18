@@ -78,16 +78,16 @@ export function WhyChooseUs() {
           />
 
           {/* Quick Trust Stat Pills */}
-          <Reveal delay={0.15} className="flex flex-wrap items-center gap-4 sm:gap-6 shrink-0">
+          <Reveal delay={0.15} className="grid grid-cols-3 gap-2.5 sm:flex sm:flex-wrap sm:items-center sm:gap-6 shrink-0 w-full sm:w-auto">
             {trustMetrics.map((m) => (
               <div
                 key={m.label}
-                className="flex flex-col border border-ivory/15 bg-charcoal-soft/50 px-5 py-3.5 backdrop-blur-sm"
+                className="glass-dark rounded-lg flex flex-col px-3 py-3 sm:px-5 sm:py-3.5 text-center sm:text-left transition-all duration-300 hover:border-gold/50"
               >
-                <span className="font-serif text-2xl font-light text-gold-soft sm:text-3xl">
+                <span className="font-serif text-xl sm:text-3xl font-light text-gold-soft">
                   {m.value}
                 </span>
-                <span className="mt-1 text-[11px] font-medium uppercase tracking-[0.2em] text-ivory/60">
+                <span className="mt-1 text-[9px] sm:text-[11px] font-medium uppercase tracking-[0.14em] sm:tracking-[0.2em] text-ivory/60 leading-tight">
                   {m.label}
                 </span>
               </div>
@@ -101,7 +101,10 @@ export function WhyChooseUs() {
             const Icon = p.icon;
             return (
               <Reveal key={p.number} delay={i * 0.1}>
-                <div className="group relative flex h-full flex-col justify-between overflow-hidden border border-ivory/10 bg-charcoal-soft/40 p-8 sm:p-9 backdrop-blur-md transition-all duration-300 hover:border-gold/50 hover:bg-charcoal-soft/70 hover:shadow-[0_12px_36px_rgba(212,175,55,0.12)]">
+                <div className="glass-dark group relative flex h-full flex-col justify-between overflow-hidden rounded-xl p-6 sm:p-9 transition-all duration-500 hover:border-gold/50 hover:shadow-[0_16px_40px_rgba(212,175,55,0.18)]">
+                  {/* Hairline specular top highlight */}
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
+
                   {/* Subtle hover gradient glow inside card */}
                   <div className="pointer-events-none absolute -right-20 -top-20 size-48 rounded-full bg-gold/10 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
 
@@ -111,30 +114,30 @@ export function WhyChooseUs() {
                       <span className="font-serif text-3xl font-light text-gold/40 transition-colors duration-300 group-hover:text-gold-soft">
                         {p.number}
                       </span>
-                      <div className="flex size-12 items-center justify-center rounded-lg border border-gold/30 bg-gold/10 text-gold transition-transform duration-300 group-hover:scale-105 group-hover:bg-gold group-hover:text-charcoal shadow-[0_2px_12px_rgba(212,175,55,0.2)]">
+                      <div className="flex size-11 sm:size-12 items-center justify-center rounded-lg border border-gold/30 bg-gold/10 text-gold transition-transform duration-300 group-hover:scale-105 group-hover:bg-gold group-hover:text-charcoal shadow-[0_2px_12px_rgba(212,175,55,0.2)]">
                         <Icon className="size-5" />
                       </div>
                     </div>
 
                     {/* Title & Tagline */}
-                    <div className="mt-6">
-                      <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-gold-soft/80">
+                    <div className="mt-5 sm:mt-6">
+                      <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-gold-soft/80">
                         {p.tagline}
                       </span>
-                      <h3 className="mt-1.5 font-serif text-2xl font-light tracking-[-0.01em] text-ivory transition-colors duration-300 group-hover:text-ivory sm:text-[1.75rem]">
+                      <h3 className="mt-1.5 font-serif text-xl sm:text-2xl lg:text-[1.75rem] font-light tracking-[-0.01em] text-ivory transition-colors duration-300 group-hover:text-ivory">
                         {p.title}
                       </h3>
                     </div>
 
                     {/* Explanatory Copy */}
-                    <p className="mt-4 text-[14.5px] leading-relaxed text-ivory/70 sm:text-[15px]">
+                    <p className="mt-3 sm:mt-4 text-[13.5px] sm:text-[15px] leading-relaxed text-ivory/70">
                       {p.copy}
                     </p>
                   </div>
 
                   {/* Highlights Bullet Tags */}
-                  <div className="mt-8 pt-6 border-t border-ivory/10">
-                    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[12px] text-ivory/60">
+                  <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-ivory/10">
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[11.5px] sm:text-[12px] text-ivory/60">
                       {p.highlights.map((h) => (
                         <span key={h} className="inline-flex items-center gap-1.5">
                           <CheckCircle2 className="size-3 text-gold shrink-0" />
@@ -151,19 +154,19 @@ export function WhyChooseUs() {
 
         {/* Bottom Editorial Callout Banner */}
         <Reveal delay={0.4} className="mt-14">
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between border border-gold/30 bg-charcoal-soft/50 p-6 sm:p-8 backdrop-blur-md">
+          <div className="glass-gold flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between rounded-xl p-5 sm:p-8">
             <div>
-              <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-gold">
+              <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.25em] text-gold">
                 Client Advisory Commitment
               </span>
-              <p className="mt-1 font-serif text-lg text-ivory sm:text-xl">
+              <p className="mt-1 font-serif text-base sm:text-xl text-ivory">
                 Ready to explore verified residential or commercial property in Trivandrum?
               </p>
             </div>
 
             <Link
               href="/contact"
-              className="inline-flex h-12 items-center justify-center gap-2.5 bg-gradient-to-r from-gold-soft via-gold to-gold-deep px-7 text-[12px] font-semibold uppercase tracking-[0.18em] text-charcoal shadow-[0_2px_14px_rgba(212,175,55,0.3)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_4px_22px_rgba(212,175,55,0.45)] active:scale-[0.98] shrink-0"
+              className="inline-flex h-12 items-center justify-center gap-2.5 bg-gradient-to-r from-gold-soft via-gold to-gold-deep px-7 text-[12px] font-semibold uppercase tracking-[0.18em] text-charcoal shadow-[0_2px_14px_rgba(212,175,55,0.3)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_4px_22px_rgba(212,175,55,0.45)] active:scale-[0.98] shrink-0 w-full sm:w-auto"
             >
               <span>Schedule a Consultation</span>
               <ArrowRight className="size-4" />

@@ -77,7 +77,7 @@ export function Footer() {
             <div>
               <Logo dark />
               <p className="mt-5 text-[14px] leading-relaxed text-ivory/70 max-w-sm">
-                Golden Acres Real Estate is a premier consultancy based in Trivandrum, Kerala.
+                Golden Acres Real Estates (goldenacresrealestate.co.in) is a premier property consultancy based in Trivandrum, Kerala.
                 We provide title-checked guidance across residential homes, luxury villas, commercial spaces, and verified land parcels.
               </p>
 
@@ -275,7 +275,7 @@ export function Footer() {
       <div className="border-t border-ivory/10 bg-[#0B0907]">
         <div className="container-site flex flex-col items-center justify-between gap-4 py-6 text-[12px] text-ivory/50 sm:flex-row">
           <p className="text-center sm:text-left">
-            © {year} <span className="text-ivory/80 font-medium">{brand.legalName}</span>. All rights reserved. Real Estate Consultancy — Trivandrum, Kerala.
+            © {year} <span className="text-ivory/80 font-medium">{brand.legalName}</span> (goldenacresrealestate.co.in). All rights reserved. Real Estate Consultancy — Trivandrum, Kerala.
           </p>
 
           <div className="flex items-center gap-6">

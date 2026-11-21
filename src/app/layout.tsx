@@ -24,9 +24,9 @@ const manrope = Manrope({
   display: "swap",
 });
 
-const homeTitle = `${site.name} — Property for Sale in Trivandrum`;
+const homeTitle = `${site.name} — Real Estate in Trivandrum | goldenacresrealestate.co.in`;
 const homeDescription =
-  "Real estate consultants in Trivandrum (Thiruvananthapuram). Land, plots, flats, villas and commercial property in Kazhakootam, Vellayani, Anayara and more.";
+  "Official website of Golden Acres Real Estates (goldenacresrealestate.co.in). Premier real estate consultants in Trivandrum (Thiruvananthapuram) for land, plots, flats, and luxury villas in Kazhakootam, Vellayani, Anayara and across Kerala.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -96,11 +96,15 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-48x48.png", type: "image/png", sizes: "48x48" },
+      { url: "/favicon-96x96.png", type: "image/png", sizes: "96x96" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
       { url: "/icon.png", type: "image/png", sizes: "512x512" },
       { url: "/icon.svg", type: "image/svg+xml" },
     ],
     apple: [
       { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
     shortcut: "/favicon.ico",
   },

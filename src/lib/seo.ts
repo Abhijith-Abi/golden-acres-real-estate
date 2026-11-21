@@ -35,6 +35,11 @@ export const coreKeywords = [
   "property consultant Trivandrum",
   "real estate consultant Kerala",
   "Golden Acres Real Estates",
+  "Golden Acres Real Estate",
+  "Golden Acres",
+  "goldenacres",
+  "goldenacresrealestate",
+  "Golden Acres Trivandrum",
 ];
 
 interface BuildMetadataInput {

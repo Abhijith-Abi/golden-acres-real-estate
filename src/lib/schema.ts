@@ -57,7 +57,7 @@ export function siteGraph() {
           "@type": "ImageObject",
           url: absoluteUrl("/brand/logo-full.png"),
         },
-        image: absoluteUrl("/og/golden-acres-og.png"),
+        image: absoluteUrl("/og-image.png"),
         ...(telephones.length ? { telephone: telephones[0] } : {}),
         ...(contact.email.address ? { email: contact.email.address } : {}),
         address,

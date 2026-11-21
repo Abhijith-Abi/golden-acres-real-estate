@@ -1,4 +1,4 @@
-import { Phone, Clock } from "lucide-react";
+import { Phone, Mail, Clock } from "lucide-react";
 import { PageHero } from "@/components/layout/PageHero";
 import { Reveal } from "@/components/ui/motion-primitives";
 import { ContactForm } from "@/components/forms/ContactForm";
@@ -54,7 +54,7 @@ export default function ContactPage() {
     ...(contact.email.address
       ? [
           {
-            icon: Clock,
+            icon: Mail,
             title: "Email",
             lines: [
               { label: contact.email.address, href: `mailto:${contact.email.address}` },

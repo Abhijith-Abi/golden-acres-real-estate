@@ -79,7 +79,7 @@ export function Hero() {
               variants={maskLineVariant}
               className="block will-change-transform"
             >
-              Where your address
+              Where your address{" "}
             </motion.span>
           </span>
           <span className="block overflow-hidden pb-[0.16em]">

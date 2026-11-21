@@ -42,19 +42,21 @@ export const metadata: Metadata = {
   publisher: site.name,
   category: "real estate",
   formatDetection: { telephone: true, email: true, address: true },
-  alternates: { canonical: "/" },
+  alternates: { canonical: SITE_URL },
   openGraph: {
     type: "website",
     siteName: site.name,
     title: homeTitle,
     description: homeDescription,
-    url: "/",
+    url: SITE_URL,
     locale: site.locale,
     images: [
       {
-        url: "/og/golden-acres-og.png",
+        url: `${SITE_URL}/og-image.png`,
+        secureUrl: `${SITE_URL}/og-image.png`,
         width: 1200,
         height: 630,
+        type: "image/png",
         alt: `${site.name} — real estate in Trivandrum, Kerala`,
       },
     ],
@@ -63,7 +65,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: homeTitle,
     description: homeDescription,
-    images: ["/og/golden-acres-og.png"],
+    images: [`${SITE_URL}/og-image.png`],
   },
   robots: {
     index: true,
@@ -77,7 +79,9 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    google:
+      process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ??
+      "google008d788f2689e4cb",
     other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
       ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
       : undefined,

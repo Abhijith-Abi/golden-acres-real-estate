@@ -64,31 +64,43 @@ export function buildMetadata({
   description,
   path,
   keywords,
-  image = "/og/golden-acres-og.png",
+  image = "/og-image.png",
   imageAlt = `${site.name} — real estate in Trivandrum, Kerala`,
   absoluteTitle = false,
   noindex = false,
 }: BuildMetadataInput): Metadata {
   const fullTitle = absoluteTitle ? title : `${title} — ${site.name}`;
+  const fullImageUrl = absoluteUrl(image);
+  const canonicalUrl = absoluteUrl(path);
+
   return {
     title: absoluteTitle ? { absolute: title } : title,
     description,
     ...(keywords ? { keywords } : {}),
-    alternates: { canonical: path },
+    alternates: { canonical: canonicalUrl },
     openGraph: {
       type: "website",
       siteName: site.name,
       locale: site.locale,
-      url: path,
+      url: canonicalUrl,
       title: fullTitle,
       description,
-      images: [{ url: image, width: 1200, height: 630, alt: imageAlt }],
+      images: [
+        {
+          url: fullImageUrl,
+          secureUrl: fullImageUrl,
+          width: 1200,
+          height: 630,
+          type: "image/png",
+          alt: imageAlt,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: fullTitle,
       description,
-      images: [image],
+      images: [fullImageUrl],
     },
     ...(noindex ? { robots: { index: false, follow: true } } : {}),
   };

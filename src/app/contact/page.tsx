@@ -15,10 +15,10 @@ import { imagery } from "@/data/imagery";
 import Image from "next/image";
 
 const contactDescription =
-  "Contact Golden Acres Real Estates in Trivandrum. Call or WhatsApp for land, flat, house and commercial property enquiries, or send the form and we will call you back.";
+  "Contact Golden Acres Real Estates in Trivandrum. Call +91 92922 90826 or WhatsApp for plots, villas, flats, and commercial property advisory in Kerala.";
 
 export const metadata = buildMetadata({
-  title: "Contact Golden Acres — Real Estate in Trivandrum",
+  title: "Contact Us",
   description: contactDescription,
   path: "/contact",
   keywords: ["contact real estate agent Trivandrum", "property enquiry Trivandrum", ...coreKeywords.slice(0, 5)],

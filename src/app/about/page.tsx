@@ -11,10 +11,10 @@ import { buildMetadata, coreKeywords } from "@/lib/seo";
 import { breadcrumbSchema, webPageSchema } from "@/lib/schema";
 
 const aboutDescription =
-  "About Golden Acres Real Estates, a neighbourhood-level real estate consultancy in Trivandrum (Thiruvananthapuram) for residential, commercial and land property.";
+  "About Golden Acres Real Estates, a trusted real estate consultancy in Trivandrum (Thiruvananthapuram) for residential, commercial and land property.";
 
 export const metadata = buildMetadata({
-  title: "About Golden Acres — Real Estate Consultants in Trivandrum",
+  title: "About Us",
   description: aboutDescription,
   path: "/about",
   keywords: ["about Golden Acres Real Estates", "real estate consultants Trivandrum", ...coreKeywords.slice(0, 5)],

@@ -24,9 +24,9 @@ const manrope = Manrope({
   display: "swap",
 });
 
-const homeTitle = `${site.name} — Real Estate in Trivandrum | goldenacresrealestate.co.in`;
+const homeTitle = "Golden Acres Real Estates — Real Estate in Trivandrum";
 const homeDescription =
-  "Official website of Golden Acres Real Estates (goldenacresrealestate.co.in). Premier real estate consultants in Trivandrum (Thiruvananthapuram) for land, plots, flats, and luxury villas in Kazhakootam, Vellayani, Anayara and across Kerala.";
+  "Golden Acres Real Estates (goldenacresrealestate.co.in): Premier property consultants in Trivandrum for land, plots, flats, and luxury villas in Kerala.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -42,7 +42,13 @@ export const metadata: Metadata = {
   publisher: site.name,
   category: "real estate",
   formatDetection: { telephone: true, email: true, address: true },
-  alternates: { canonical: SITE_URL },
+  alternates: {
+    canonical: SITE_URL,
+    languages: {
+      "en-IN": SITE_URL,
+      "x-default": SITE_URL,
+    },
+  },
   openGraph: {
     type: "website",
     siteName: site.name,

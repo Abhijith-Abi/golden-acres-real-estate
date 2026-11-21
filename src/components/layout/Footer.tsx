@@ -245,24 +245,6 @@ export function Footer() {
                   </a>
                 )}
 
-                {/* Official Email */}
-                {contact.email.address && (
-                  <a
-                    href={`mailto:${contact.email.address}`}
-                    className="glass-dark group flex items-start gap-3 rounded-lg p-3 transition-all duration-300 hover:border-gold/60"
-                  >
-                    <Mail className="size-4 text-gold mt-0.5 shrink-0 transition-transform duration-300 group-hover:scale-110" />
-                    <div className="min-w-0">
-                      <span className="block text-[10px] font-semibold uppercase tracking-[0.25em] text-ivory/40">
-                        Official Email
-                      </span>
-                      <span className="text-[13px] font-medium text-ivory group-hover:text-gold-soft transition-colors truncate block">
-                        {contact.email.address}
-                      </span>
-                    </div>
-                  </a>
-                )}
-
                 {/* Location */}
                 <div className="glass-dark flex items-start gap-3 rounded-lg p-3">
                   <MapPin className="size-4 text-gold mt-0.5 shrink-0" />

@@ -28,10 +28,10 @@ export const contact = {
     number: "919292290826",
     verified: false, // ← set to true after client confirmation
   },
-  /** Official public email address. */
+  /** No public email has been published — leave empty. */
   email: {
-    address: "abi@abisolutions.in",
-    verified: true,
+    address: "",
+    verified: false,
   },
   /** No verified street address yet — leave empty to hide address blocks. */
   address: {

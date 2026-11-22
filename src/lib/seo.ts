@@ -93,10 +93,20 @@ export function buildMetadata({
   const canonicalUrl = absoluteUrl(path);
   const socialDescription = ogDescription ?? formatSocialDescription(description);
 
+  // Combine page-specific keywords with core brand keywords
+  const allKeywords = Array.from(
+    new Set([...(keywords ?? []), ...coreKeywords])
+  );
+
   return {
     title: absoluteTitle ? { absolute: title } : title,
     description,
-    ...(keywords ? { keywords } : {}),
+    applicationName: site.name,
+    authors: [{ name: site.name, url: SITE_URL }],
+    creator: site.name,
+    publisher: site.name,
+    category: "real estate",
+    keywords: allKeywords,
     alternates: {
       canonical: canonicalUrl,
       languages: {
@@ -130,6 +140,22 @@ export function buildMetadata({
       description: socialDescription,
       images: [fullImageUrl],
     },
-    ...(noindex ? { robots: { index: false, follow: true } } : {}),
+    robots: {
+      index: !noindex,
+      follow: true,
+      googleBot: {
+        index: !noindex,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
+    },
+    other: {
+      "geo.region": "IN-KL",
+      "geo.placename": "Thiruvananthapuram",
+      "geo.position": "8.5241;76.9366",
+      ICBM: "8.5241, 76.9366",
+    },
   };
 }

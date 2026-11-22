@@ -15,10 +15,17 @@ import { generalFaqs } from "@/data/faqs";
 import { faqSchema, webPageSchema } from "@/lib/schema";
 import { testimonials } from "@/data/testimonials";
 import { site } from "@/config/social";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/" },
-};
+export const metadata: Metadata = buildMetadata({
+  title: "Golden Acres Real Estates — Real Estate in Trivandrum",
+  description:
+    "Golden Acres Real Estates (goldenacresrealestate.co.in): Premier property consultants in Trivandrum for land, plots, flats, and luxury villas in Kerala.",
+  ogDescription:
+    "Premier property consultants in Trivandrum for land, plots, flats & luxury villas in Kerala. Find your dream property.",
+  path: "/",
+  absoluteTitle: true,
+});
 
 export default function HomePage() {
   return (

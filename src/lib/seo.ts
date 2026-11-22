@@ -46,6 +46,8 @@ interface BuildMetadataInput {
   /** Page title. The site name is appended unless `absoluteTitle` is set. */
   title: string;
   description: string;
+  /** Optional shorter description for social preview cards (recommended <= 125 chars). */
+  ogDescription?: string;
   /** Site-relative canonical path, e.g. "/about". */
   path: string;
   keywords?: string[];
@@ -55,6 +57,17 @@ interface BuildMetadataInput {
   /** Use the title exactly as given (no " — Site name" suffix). */
   absoluteTitle?: boolean;
   noindex?: boolean;
+}
+
+/** Formats descriptions for social share cards to prevent mobile truncation (< 125 chars) */
+export function formatSocialDescription(desc: string, maxLen = 125): string {
+  if (desc.length <= maxLen) return desc;
+  const sliced = desc.slice(0, maxLen);
+  const lastSpace = sliced.lastIndexOf(" ");
+  if (lastSpace > 70) {
+    return sliced.slice(0, lastSpace).replace(/[.,;:!?\s]+$/, "");
+  }
+  return sliced;
 }
 
 /**
@@ -67,6 +80,7 @@ interface BuildMetadataInput {
 export function buildMetadata({
   title,
   description,
+  ogDescription,
   path,
   keywords,
   image = "/og-image.png",
@@ -77,6 +91,7 @@ export function buildMetadata({
   const fullTitle = absoluteTitle ? title : `${title} | Golden Acres`;
   const fullImageUrl = absoluteUrl(image);
   const canonicalUrl = absoluteUrl(path);
+  const socialDescription = ogDescription ?? formatSocialDescription(description);
 
   return {
     title: absoluteTitle ? { absolute: title } : title,
@@ -95,7 +110,7 @@ export function buildMetadata({
       locale: site.locale,
       url: canonicalUrl,
       title: fullTitle,
-      description,
+      description: socialDescription,
       images: [
         {
           url: fullImageUrl,
@@ -110,7 +125,7 @@ export function buildMetadata({
     twitter: {
       card: "summary_large_image",
       title: fullTitle,
-      description,
+      description: socialDescription,
       images: [fullImageUrl],
     },
     ...(noindex ? { robots: { index: false, follow: true } } : {}),

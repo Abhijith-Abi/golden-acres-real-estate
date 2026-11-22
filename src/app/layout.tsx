@@ -28,6 +28,8 @@ const manrope = Manrope({
 const homeTitle = "Golden Acres Real Estates — Real Estate in Trivandrum";
 const homeDescription =
   "Golden Acres Real Estates (goldenacresrealestate.co.in): Premier property consultants in Trivandrum for land, plots, flats, and luxury villas in Kerala.";
+const homeOgDescription =
+  "Premier property consultants in Trivandrum for land, plots, flats & luxury villas in Kerala. Find your dream property.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -54,7 +56,7 @@ export const metadata: Metadata = {
     type: "website",
     siteName: site.name,
     title: homeTitle,
-    description: homeDescription,
+    description: homeOgDescription,
     url: SITE_URL,
     locale: site.locale,
     images: [
@@ -71,7 +73,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: homeTitle,
-    description: homeDescription,
+    description: homeOgDescription,
     images: [`${SITE_URL}/og-image.png`],
   },
   robots: {

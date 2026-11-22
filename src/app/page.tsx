@@ -26,9 +26,9 @@ export default function HomePage() {
       <JsonLd
         data={[
           webPageSchema({
-            name: "Golden Acres Real Estates — Property for Sale in Trivandrum",
+            name: "Golden Acres Real Estates — Real Estate in Trivandrum",
             description:
-              "Real estate consultants in Trivandrum (Thiruvananthapuram) for land, plots, flats, villas and commercial property.",
+              "Golden Acres Real Estates (goldenacresrealestate.co.in): Premier property consultants in Trivandrum for land, plots, flats, and luxury villas in Kerala.",
             path: "/",
           }),
           faqSchema(generalFaqs),

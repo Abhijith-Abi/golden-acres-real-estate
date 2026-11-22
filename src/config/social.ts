@@ -2,6 +2,7 @@
 
 export const social = {
   instagram: "https://www.instagram.com/golden_acres_realestates/",
+  twitter: process.env.NEXT_PUBLIC_TWITTER_HANDLE ?? "@goldenacresre",
 } as const;
 
 /**

@@ -7,7 +7,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
 import { Toaster } from "@/components/ui/sonner";
-import { site } from "@/config/social";
+import { site, social } from "@/config/social";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteGraph } from "@/lib/schema";
 import { coreKeywords, SITE_URL } from "@/lib/seo";
@@ -72,6 +72,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    site: social.twitter,
+    creator: social.twitter,
     title: homeTitle,
     description: homeOgDescription,
     images: [`${SITE_URL}/og-image.png`],
@@ -105,6 +107,8 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
       { url: "/favicon-48x48.png", type: "image/png", sizes: "48x48" },
       { url: "/favicon-96x96.png", type: "image/png", sizes: "96x96" },
       { url: "/icon-192.png", type: "image/png", sizes: "192x192" },

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { site } from "@/config/social";
+import { site, social } from "@/config/social";
 
 /** Canonical origin without a trailing slash. */
 export const SITE_URL = site.url.replace(/\/+$/, "");
@@ -124,6 +124,8 @@ export function buildMetadata({
     },
     twitter: {
       card: "summary_large_image",
+      site: social.twitter,
+      creator: social.twitter,
       title: fullTitle,
       description: socialDescription,
       images: [fullImageUrl],

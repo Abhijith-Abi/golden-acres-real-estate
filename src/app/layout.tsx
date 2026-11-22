@@ -45,13 +45,9 @@ export const metadata: Metadata = {
   publisher: site.name,
   category: "real estate",
   formatDetection: { telephone: true, email: true, address: true },
-  alternates: {
-    canonical: SITE_URL,
-    languages: {
-      "en-IN": SITE_URL,
-      "x-default": SITE_URL,
-    },
-  },
+  // No canonical here: a layout-level canonical would be inherited by any
+  // page that forgets its own and point it at the homepage. Every page sets
+  // its canonical through buildMetadata().
   openGraph: {
     type: "website",
     siteName: site.name,
@@ -106,9 +102,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
+      // Google favicon rules: square, multiple of 48px, stable crawlable URLs.
+      // The SVG (140 KB, embeds a raster) and the 32px PNG are not declared;
+      // /favicon.ico still contains 16/32/48 for legacy clients.
       { url: "/favicon.ico", sizes: "48x48" },
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
       { url: "/favicon-48x48.png", type: "image/png", sizes: "48x48" },
       { url: "/favicon-96x96.png", type: "image/png", sizes: "96x96" },
       { url: "/icon-192.png", type: "image/png", sizes: "192x192" },

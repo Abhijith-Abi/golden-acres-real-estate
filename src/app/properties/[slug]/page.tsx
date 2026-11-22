@@ -46,7 +46,9 @@ export async function generateMetadata({
   if (!property) return {};
   const priceLabel =
     property.price != null ? formatPrice(property.price) : "Price on request";
-  const title = `${property.title} — ${property.location}, Trivandrum`;
+  const title = property.title.toLowerCase().includes(property.location.toLowerCase())
+    ? property.title
+    : `${property.title} in ${property.location}`;
   const description = `${property.summary} ${priceLabel} · ${property.area.value.toLocaleString("en-IN")} ${property.area.unit} in ${property.location}, Trivandrum.`;
   return buildMetadata({
     title,

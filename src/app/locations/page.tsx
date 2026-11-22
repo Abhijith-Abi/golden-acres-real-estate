@@ -10,7 +10,7 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/schema";
 import { absoluteUrl } from "@/lib/seo";
 
 const description =
-  "Property for sale across Trivandrum (Thiruvananthapuram): Kazhakootam, Attukal, Vilappilsala, Pothencode, Anayara, Vellayani, Malayinkeezhu, Enchakkal and the city centre.";
+  "Property for sale across Trivandrum: Kazhakootam, Attukal, Vilappilsala, Pothencode, Anayara, Vellayani, Malayinkeezhu, and city centre corridors.";
 
 export const metadata = buildMetadata({
   title: "Areas We Serve in Trivandrum",

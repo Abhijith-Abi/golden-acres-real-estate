@@ -29,7 +29,7 @@ export const locations: Location[] = [
   {
     slug: "kazhakootam",
     name: "Kazhakootam",
-    seoTitle: "Property for Sale in Kazhakootam, Trivandrum",
+    seoTitle: "Property in Kazhakootam, Trivandrum",
     seoDescription:
       "Land, flats, villas and commercial property in Kazhakootam, Trivandrum — the Technopark corridor. Local guidance from Golden Acres Real Estates.",
     heading: "Property for sale in Kazhakootam, Trivandrum",
@@ -61,7 +61,7 @@ export const locations: Location[] = [
   {
     slug: "attukal",
     name: "Attukal",
-    seoTitle: "Property for Sale in Attukal, Trivandrum",
+    seoTitle: "Property in Attukal, Trivandrum",
     seoDescription:
       "Flats, houses and land near Attukal, Trivandrum — close to the city centre and East Fort. Honest local advice from Golden Acres Real Estates.",
     heading: "Property for sale in Attukal, Trivandrum",
@@ -87,7 +87,7 @@ export const locations: Location[] = [
   {
     slug: "vilappilsala",
     name: "Vilappilsala",
-    seoTitle: "Land & Houses for Sale in Vilappilsala, Trivandrum",
+    seoTitle: "Property in Vilappilsala, Trivandrum",
     seoDescription:
       "Residential land, garden homes and villas in Vilappilsala, east Trivandrum. Title-checked options and local advice from Golden Acres Real Estates.",
     heading: "Property for sale in Vilappilsala, Trivandrum",
@@ -113,7 +113,7 @@ export const locations: Location[] = [
   {
     slug: "pothencode",
     name: "Pothencode",
-    seoTitle: "Property for Sale in Pothencode, Trivandrum",
+    seoTitle: "Property in Pothencode, Trivandrum",
     seoDescription:
       "Houses, villas and plots in Pothencode, north Trivandrum — quiet streets within reach of Kazhakootam. Guidance from Golden Acres Real Estates.",
     heading: "Property for sale in Pothencode, Trivandrum",
@@ -139,7 +139,7 @@ export const locations: Location[] = [
   {
     slug: "anayara",
     name: "Anayara",
-    seoTitle: "Flats & Property for Sale in Anayara, Trivandrum",
+    seoTitle: "Property in Anayara, Trivandrum",
     seoDescription:
       "Apartments, houses and plots in Anayara, Trivandrum — between the city centre and the airport. Verified guidance from Golden Acres Real Estates.",
     heading: "Property for sale in Anayara, Trivandrum",
@@ -165,7 +165,7 @@ export const locations: Location[] = [
   {
     slug: "vellayani",
     name: "Vellayani",
-    seoTitle: "Land & Plots for Sale in Vellayani, Trivandrum",
+    seoTitle: "Plots & Land in Vellayani, Trivandrum",
     seoDescription:
       "Residential plots and homes near Vellayani Lake, Trivandrum. Quiet, green surroundings with title checks by Golden Acres Real Estates.",
     heading: "Property for sale in Vellayani, Trivandrum",
@@ -191,7 +191,7 @@ export const locations: Location[] = [
   {
     slug: "malayinkeezhu",
     name: "Malayinkeezhu",
-    seoTitle: "Land & Homes for Sale in Malayinkeezhu, Trivandrum",
+    seoTitle: "Property in Malayinkeezhu, Trivandrum",
     seoDescription:
       "Land parcels, plots and homes in Malayinkeezhu, Trivandrum, on the Kattakada road side. Honest advice from Golden Acres Real Estates.",
     heading: "Property for sale in Malayinkeezhu, Trivandrum",
@@ -217,7 +217,7 @@ export const locations: Location[] = [
   {
     slug: "enchakkal",
     name: "Enchakkal",
-    seoTitle: "Commercial & Residential Property in Enchakkal, Trivandrum",
+    seoTitle: "Property in Enchakkal, Trivandrum",
     seoDescription:
       "Commercial space, flats, houses and plots in Enchakkal, Trivandrum, on the bypass corridor towards Kovalam. Advice from Golden Acres Real Estates.",
     heading: "Property for sale in Enchakkal, Trivandrum",
@@ -243,7 +243,7 @@ export const locations: Location[] = [
   {
     slug: "trivandrum-city",
     name: "Trivandrum City",
-    seoTitle: "Property for Sale in Trivandrum City Centre",
+    seoTitle: "Property in Trivandrum City Centre",
     seoDescription:
       "Flats, houses and commercial property in Trivandrum city — Pattom, Kowdiar, Vazhuthacaud and the city centre. Golden Acres Real Estates.",
     heading: "Property for sale in Trivandrum city centre",

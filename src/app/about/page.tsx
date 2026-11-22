@@ -14,7 +14,8 @@ const aboutDescription =
   "About Golden Acres Real Estates, a trusted real estate consultancy in Trivandrum (Thiruvananthapuram) for residential, commercial and land property.";
 
 export const metadata = buildMetadata({
-  title: "About Us",
+  title: "About Golden Acres | Real Estate Trivandrum",
+  absoluteTitle: true,
   description: aboutDescription,
   path: "/about",
   keywords: ["about Golden Acres Real Estates", "real estate consultants Trivandrum", ...coreKeywords.slice(0, 5)],

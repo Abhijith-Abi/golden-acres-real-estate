@@ -21,10 +21,10 @@ import { ORG_ID, breadcrumbSchema, webPageSchema } from "@/lib/schema";
 import { absoluteUrl } from "@/lib/seo";
 
 const servicesDescription =
-  "Property buying and selling help, land and plot advisory, investment consultation, and residential and commercial property services in Trivandrum from Golden Acres Real Estates.";
+  "Property buying, selling, land valuation, and investment advisory in Trivandrum from Golden Acres Real Estates. Honest, dedicated guidance.";
 
 export const metadata = buildMetadata({
-  title: "Real Estate Services in Trivandrum",
+  title: "Real Estate Services",
   description: servicesDescription,
   path: "/services",
   keywords: [

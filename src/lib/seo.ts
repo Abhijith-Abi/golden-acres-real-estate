@@ -74,7 +74,7 @@ export function buildMetadata({
   absoluteTitle = false,
   noindex = false,
 }: BuildMetadataInput): Metadata {
-  const fullTitle = absoluteTitle ? title : `${title} — ${site.name}`;
+  const fullTitle = absoluteTitle ? title : `${title} | Golden Acres`;
   const fullImageUrl = absoluteUrl(image);
   const canonicalUrl = absoluteUrl(path);
 
@@ -82,7 +82,13 @@ export function buildMetadata({
     title: absoluteTitle ? { absolute: title } : title,
     description,
     ...(keywords ? { keywords } : {}),
-    alternates: { canonical: canonicalUrl },
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        "en-IN": canonicalUrl,
+        "x-default": canonicalUrl,
+      },
+    },
     openGraph: {
       type: "website",
       siteName: site.name,

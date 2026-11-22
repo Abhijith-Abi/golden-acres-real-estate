@@ -160,7 +160,7 @@ export const propertyTypePages: PropertyTypePage[] = [
     slug: "commercial-property",
     category: "commercial",
     navLabel: "Commercial",
-    seoTitle: "Commercial Property for Sale & Rent in Trivandrum",
+    seoTitle: "Commercial Property in Trivandrum",
     seoDescription:
       "Shops, offices, showrooms and commercial space in Trivandrum (Thiruvananthapuram). Frontage, footfall and lease advice from Golden Acres Real Estates.",
     heading: "Commercial property in Trivandrum",

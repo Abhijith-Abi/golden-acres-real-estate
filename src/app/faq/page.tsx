@@ -7,10 +7,10 @@ import { buildMetadata, coreKeywords } from "@/lib/seo";
 import { breadcrumbSchema, faqSchema, webPageSchema } from "@/lib/schema";
 
 const description =
-  "Answers about buying land, flats and houses in Trivandrum (Thiruvananthapuram): areas, documents to check, how land is measured in Kerala, and how to contact Golden Acres Real Estates.";
+  "Answers on buying land, flats, and houses in Trivandrum: paperwork, land measurement in cents, and legal due diligence with Golden Acres Real Estates.";
 
 export const metadata = buildMetadata({
-  title: "Real Estate FAQs — Buying Property in Trivandrum",
+  title: "Frequently Asked Questions",
   description,
   path: "/faq",
   keywords: [

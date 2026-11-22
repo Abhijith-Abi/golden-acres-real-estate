@@ -14,7 +14,7 @@ const projectsDescription =
   "Residences, plots and commercial spaces curated by Golden Acres Real Estates across Trivandrum's key neighbourhoods.";
 
 export const metadata = buildMetadata({
-  title: "Our Projects — Real Estate in Trivandrum",
+  title: "Projects Portfolio",
   description: projectsDescription,
   path: "/projects",
   keywords: ["real estate projects Trivandrum", ...coreKeywords.slice(0, 5)],

@@ -8,14 +8,19 @@ import { buildMetadata, coreKeywords } from "@/lib/seo";
 import { breadcrumbSchema, webPageSchema } from "@/lib/schema";
 import { absoluteUrl } from "@/lib/seo";
 
-const propertiesDescription =
-  "Browse houses, villas, flats, land, plots and commercial property for sale in Trivandrum (Thiruvananthapuram) with Golden Acres Real Estates.";
+const hasVerifiedListings = properties.some((property) => !property.sample);
+const propertiesDescription = hasVerifiedListings
+  ? "Browse houses, villas, flats, land, plots and commercial property for sale in Trivandrum (Thiruvananthapuram) with Golden Acres Real Estates."
+  : "Request current property options in Trivandrum from Golden Acres Real Estates while verified listings are being prepared.";
 
 export const metadata = buildMetadata({
   title: "Properties for Sale in Trivandrum",
   description: propertiesDescription,
   path: "/properties",
   keywords: coreKeywords,
+  // Current catalog entries are explicitly marked as sample data. Keep the
+  // collection out of search until verified inventory is published.
+  noindex: !hasVerifiedListings,
 });
 
 export default function PropertiesPage() {
@@ -34,15 +39,21 @@ export default function PropertiesPage() {
               description: propertiesDescription,
               path: "/properties",
             }),
-            mainEntity: {
-              "@type": "ItemList",
-              itemListElement: properties.map((p, i) => ({
-                "@type": "ListItem",
-                position: i + 1,
-                name: p.title,
-                url: absoluteUrl(`/properties/${p.slug}`),
-              })),
-            },
+            ...(hasVerifiedListings
+              ? {
+                  mainEntity: {
+                    "@type": "ItemList",
+                    itemListElement: properties
+                      .filter((property) => !property.sample)
+                      .map((property, index) => ({
+                        "@type": "ListItem",
+                        position: index + 1,
+                        name: property.title,
+                        url: absoluteUrl(`/properties/${property.slug}`),
+                      })),
+                  },
+                }
+              : {}),
           },
         ]}
       />
@@ -59,12 +70,19 @@ export default function PropertiesPage() {
       />
       <section className="py-16 lg:py-24">
         <div className="container-site">
-          <PropertiesExplorer properties={properties} />
-          <p className="mt-10 text-center text-[13px] text-muted-foreground">
-            Listings shown are samples pending final verification — every
-            property you&apos;ll actually view comes with checked documents and
-            confirmed details from our consultants.
-          </p>
+          {properties.some((property) => !property.sample) ? (
+            <PropertiesExplorer properties={properties.filter((property) => !property.sample)} />
+          ) : (
+            <div className="mx-auto max-w-2xl border border-charcoal/10 bg-card px-8 py-12 text-center">
+              <h2 className="font-serif text-2xl font-light text-charcoal">Current listings are being verified</h2>
+              <p className="mt-3 text-[14px] leading-relaxed text-muted-foreground">
+                We publish property details after confirming availability and key documents. Contact us with your preferred area and property type for current options.
+              </p>
+              <a href="/contact" className="mt-6 inline-flex h-12 items-center justify-center bg-charcoal px-6 text-[11px] font-medium uppercase tracking-[0.18em] text-ivory transition-colors hover:bg-charcoal-soft">
+                Request current options
+              </a>
+            </div>
+          )}
         </div>
       </section>
     </>

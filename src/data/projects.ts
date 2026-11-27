@@ -51,7 +51,7 @@ export const projects: Project[] = [
 ];
 
 export function getFeaturedProjects(): Project[] {
-  return projects.filter((p) => p.featured);
+  return projects.filter((p) => p.featured && !p.sample);
 }
 
 export function getProject(slug: string): Project | undefined {

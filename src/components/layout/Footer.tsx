@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Phone, MapPin, Mail, ArrowUp, ArrowRight, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { Phone, MapPin, ArrowUp, ArrowRight, CheckCircle2 } from "lucide-react";
 import { Logo } from "./Logo";
 import { navigation } from "@/data/navigation";
 import { locations } from "@/data/locations";

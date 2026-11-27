@@ -48,7 +48,7 @@ export default async function PropertyTypePage({
   if (!page) notFound();
 
   const path = `/trivandrum/${page.slug}`;
-  const matching = properties.filter((p) => p.category === page.category);
+  const matching = properties.filter((p) => !p.sample && p.category === page.category);
   const others = propertyTypePages.filter((t) => t.slug !== page.slug);
   const areas = locations.filter((l) => l.propertyTypes.includes(page.slug));
 

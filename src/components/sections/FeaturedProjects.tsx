@@ -1,16 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, MapPin, Building2, Trees, Landmark, Sparkles } from "lucide-react";
+import { ArrowRight, MapPin, Sparkles } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { GhostButton } from "@/components/ui/buttons";
 import { Reveal } from "@/components/ui/motion-primitives";
 import { getFeaturedProjects } from "@/data/projects";
-
-const categoryIcons = {
-  Residential: Building2,
-  "Land & Plots": Trees,
-  Commercial: Landmark,
-};
 
 /**
  * Featured Projects — Architectural Luxury Bento Grid.
@@ -20,6 +14,7 @@ const categoryIcons = {
  */
 export function FeaturedProjects() {
   const [lead, side, closing] = getFeaturedProjects();
+  if (!lead || !side || !closing) return null;
 
   return (
     <section

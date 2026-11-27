@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { MapPin } from "lucide-react";import { PageHero } from "@/components/layout/PageHero";
+import { MapPin } from "lucide-react";
+import { PageHero } from "@/components/layout/PageHero";
 import { Reveal, ImageReveal } from "@/components/ui/motion-primitives";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { EnquiryCTA } from "@/components/sections/EnquiryCTA";
@@ -10,14 +11,17 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/schema";
 import { GoldLink } from "@/components/ui/buttons";
 import { projectImagery } from "@/data/imagery";
 
-const projectsDescription =
-  "Residences, plots and commercial spaces curated by Golden Acres Real Estates across Trivandrum's key neighbourhoods.";
+const hasVerifiedProjects = projects.some((project) => !project.sample);
+const projectsDescription = hasVerifiedProjects
+  ? "Residences, plots and commercial spaces curated by Golden Acres Real Estates across Trivandrum's key neighbourhoods."
+  : "Golden Acres Real Estates is preparing a verified project portfolio for Trivandrum.";
 
 export const metadata = buildMetadata({
   title: "Projects Portfolio",
   description: projectsDescription,
   path: "/projects",
   keywords: ["real estate projects Trivandrum", ...coreKeywords.slice(0, 5)],
+  noindex: !hasVerifiedProjects,
 });
 
 export default function ProjectsPage() {
@@ -39,20 +43,23 @@ export default function ProjectsPage() {
       />
       <PageHero
         breadcrumb="Our Projects"
-        eyebrow="Selected work"
+        eyebrow={hasVerifiedProjects ? "Selected work" : "Portfolio update"}
         title={
-          <>
-            Addresses we&apos;ve matched,{" "}
-            <em className="italic text-gold-soft">one handshake at a time</em>
-          </>
+          hasVerifiedProjects ? (
+            <>Addresses we&apos;ve matched, <em className="italic text-gold-soft">one handshake at a time</em></>
+          ) : (
+            <>Our verified work is <em className="italic text-gold-soft">being prepared</em></>
+          )
         }
-        lede="Residences, plots and commercial spaces matched with the right families and businesses across Trivandrum."
+        lede={hasVerifiedProjects
+          ? "Residences, plots and commercial spaces matched with the right families and businesses across Trivandrum."
+          : "We are preparing the verified project portfolio. Contact us to discuss your property requirements across Trivandrum."}
         backgroundImage={projectImagery[0]}
       />
 
       <section className="py-20 lg:py-28">
         <div className="container-site flex flex-col gap-24 lg:gap-32">
-          {projects.map((project, i) => {
+          {projects.filter((project) => !project.sample).map((project, i) => {
             const reversed = i % 2 === 1;
             return (
               <article
@@ -108,6 +115,11 @@ export default function ProjectsPage() {
               </article>
             );
           })}
+          {projects.every((project) => project.sample) && (
+            <p className="mx-auto max-w-2xl border border-charcoal/10 bg-card px-8 py-12 text-center text-[14px] leading-relaxed text-muted-foreground">
+              Our verified project portfolio is being updated. Contact us to discuss current property requirements across Trivandrum.
+            </p>
+          )}
         </div>
 
         {/* Closing note */}

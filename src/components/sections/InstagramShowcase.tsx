@@ -17,10 +17,10 @@ export function InstagramShowcase() {
             eyebrow="On Instagram"
             title={
               <span id="instagram-heading">
-                Fresh listings, <em className="italic text-gold-deep">posted daily</em>
+                Follow us on <em className="italic text-gold-deep">Instagram</em>
               </span>
             }
-            lede="Follow the walk-throughs, site visits and new arrivals as they happen."
+          lede="See updates from Golden Acres Real Estates and get in touch about your property requirements."
           />
           <Reveal delay={0.15}>
             <a

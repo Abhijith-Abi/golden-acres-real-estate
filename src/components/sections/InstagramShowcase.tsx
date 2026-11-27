@@ -1,12 +1,11 @@
-import Image from "next/image";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/motion-primitives";
 import { InstagramIcon } from "@/components/ui/icons";
 import { instagramPosts, instagramProfileUrl } from "@/data/instagram";
 
 /**
- * Instagram showcase — image grid when posts are configured
- * (src/data/instagram.ts), plus a permanent profile CTA.
+ * Official Instagram embeds are lazy-loaded so they do not block the initial
+ * page render. The profile CTA remains available when embeds are blocked.
  */
 export function InstagramShowcase() {
   return (
@@ -20,7 +19,7 @@ export function InstagramShowcase() {
                 Follow us on <em className="italic text-gold-deep">Instagram</em>
               </span>
             }
-          lede="See updates from Golden Acres Real Estates and get in touch about your property requirements."
+            lede="See recent property updates from Golden Acres Real Estates."
           />
           <Reveal delay={0.15}>
             <a
@@ -35,43 +34,22 @@ export function InstagramShowcase() {
           </Reveal>
         </div>
 
-        {instagramPosts.length > 0 ? (
-          <div className="mt-14 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        {instagramPosts.length > 0 && (
+          <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {instagramPosts.map((post, i) => (
-              <Reveal key={post.image + i} delay={i * 0.05}>
-                <a
-                  href={post.href ?? instagramProfileUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative block aspect-square overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
-                  aria-label={`View on Instagram: ${post.alt}`}
-                >
-                  <Image
-                    src={post.image}
-                    alt={post.alt}
-                    fill
-                    sizes="(min-width: 640px) 25vw, 50vw"
-                    loading="lazy"
-                    className="object-cover transition-transform duration-700 group-hover:scale-[1.06]"
-                  />
-                  <span className="absolute inset-0 flex items-center justify-center bg-charcoal/45 opacity-0 backdrop-blur-[2px] transition-opacity duration-300 group-hover:opacity-100">
-                    <InstagramIcon className="size-6 text-ivory" />
-                  </span>
-                </a>
+              <Reveal key={post.href} delay={i * 0.05} className="mx-auto w-full max-w-[400px]">
+                <iframe
+                  src={`${post.href.replace(/\/$/, "")}/embed/`}
+                  title={`Instagram post: ${post.alt} — ${post.publishedAt}`}
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                  className="h-[640px] w-full border-0 bg-white"
+                />
+                <p className="mt-2 text-center text-xs text-muted-foreground">{post.publishedAt}</p>
               </Reveal>
             ))}
           </div>
-        ) : (
-          <Reveal className="mt-14 border border-charcoal/10 bg-secondary/60 p-10 text-center">
-            <p className="font-serif text-2xl font-light italic text-gold-deep">
-              Follow @golden_acres_realestates
-            </p>
-            <p className="mx-auto mt-3 max-w-md text-sm text-muted-foreground">
-              Our latest walk-throughs and listings live on Instagram. Approved
-              post images will appear here — add them in{" "}
-              <code className="text-xs">src/data/instagram.ts</code>.
-            </p>
-          </Reveal>
         )}
       </div>
     </section>

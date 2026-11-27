@@ -75,6 +75,8 @@ src/
   public project cards and excluded from the sitemap until verified.
 - **`src/data/testimonials.ts`** — empty on purpose (no published reviews). The
   section renders **nothing** until verified entries are added — never fake.
+- **`src/data/instagram.ts`** — recent public post/reel permalinks embedded
+  from the official Instagram profile.
 - **`src/data/imagery.ts`** — every image URL in one file (temporary Unsplash
   stock). Swap to real photography here, or drop files in `/public` and use
   local paths.
@@ -138,6 +140,6 @@ anything. On submit it opens **WhatsApp with the full enquiry pre-filled**
 4. Verified property listings: photos, prices, exact specs, addresses.
 5. Verified projects with case-study details.
 6. Genuine customer testimonials (optional).
-7. Brand photography to replace temporary stock (`src/data/imagery.ts`),
-   Instagram post images (`src/data/instagram.ts`), team portraits.
+7. Brand photography to replace temporary stock (`src/data/imagery.ts`) and
+   team portraits.
 8. Optional OG/social share image (`public/og.jpg`) + private policy text link.

@@ -79,10 +79,11 @@ export interface Testimonial {
 }
 
 export interface InstagramPost {
-  image: string;
+  /** Public post or reel URL from the official Golden Acres Instagram profile. */
+  href: string;
   alt: string;
-  /** Optional link to the specific reel/post; falls back to the profile. */
-  href?: string;
+  /** Short publish date shown for context outside the embed. */
+  publishedAt: string;
 }
 
 export type EnquiryFormData = {

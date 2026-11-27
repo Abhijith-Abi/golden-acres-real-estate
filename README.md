@@ -5,8 +5,8 @@ consultant in Trivandrum, Kerala (brand source:
 [instagram.com/golden_acres_realestates](https://www.instagram.com/golden_acres_realestates/)).
 
 Design direction: warm ivory + charcoal + champagne gold, editorial serif
-(Fraunces) with Manrope body type, Lenis smooth scroll, and Framer Motion
-transitions and reveals.
+(Fraunces) with Manrope body type, Lenis smooth scroll, GSAP/ScrollTrigger hero
+& parallax, Framer Motion micro-interactions.
 
 ---
 
@@ -26,10 +26,10 @@ npm run lint     # eslint (react-compiler rules included)
 |---|---|
 | `/` | Hero, introduction, featured properties, why-us, services, projects, testimonials, Instagram, enquiry CTA |
 | `/about` | Brand story, mission/vision, values, team section |
-| `/properties` | Verified listing discovery; shows a contact state while inventory is being verified |
-| `/properties/[slug]` | Gallery, price bar, description, specs, amenities, enquiry form + WhatsApp, similar properties; sample records are noindex |
+| `/properties` | Discovery: search, category/location/status filters, sort, grid/list layouts, empty state, loading skeleton |
+| `/properties/[slug]` | Gallery, price bar, description, specs, amenities, enquiry form + WhatsApp, similar properties |
 | `/services` | Six service chapters + 4-step process |
-| `/projects` | Verified project showcase; sample project records are noindex |
+| `/projects` | Editorial project showcase |
 | `/contact` | Contact channels, form, areas served, map slot |
 | `/api/enquiries` | Server-side lead delivery (webhook) |
 | `sitemap.xml`, `robots.txt` | SEO |
@@ -37,8 +37,8 @@ npm run lint     # eslint (react-compiler rules included)
 ## 3. Dependencies
 
 Next.js 16 (App Router, Turbopack), React 19, TypeScript, Tailwind CSS v4,
-shadcn/ui (radix style), Lucide, **Framer Motion**, **Lenis**,
-**React Hook Form + Zod + @hookform/resolvers**, **Sonner**,
+shadcn/ui (radix style), Lucide, **Framer Motion**, **GSAP + ScrollTrigger**,
+**Lenis**, **React Hook Form + Zod + @hookform/resolvers**, **Sonner**,
 **Swiper** (property gallery), next-themes (Sonner theming only).
 
 ## 4. Folder structure
@@ -53,7 +53,7 @@ src/
                            FeaturedProjects, Testimonials, InstagramShowcase, EnquiryCTA
     property/              PropertyCard, PropertiesExplorer, PropertyGallery
     forms/                 EnquiryForm, ContactForm
-    providers/             SmoothScrollProvider (Lenis)
+    providers/             SmoothScrollProvider (Lenis ⇄ GSAP ticker)
     ui/                    shadcn + motion-primitives (Reveal/LineReveal/ImageReveal), buttons, icons
   config/                  brand.ts, contact.ts, social.ts   ← business facts live here
   data/                    properties, services, projects, instagram, testimonials, imagery, navigation
@@ -68,15 +68,12 @@ src/
   numbers were found in the brand's own Instagram caption but are marked
   `verified: false`; confirm with the client, then set `verified: true`.
 - **`src/data/properties.ts`** — listings. All current entries are **sample
-  listings** (`sample: true`, `price: null`). Samples are hidden from public
-  property cards and excluded from the sitemap. The collection stays noindex
-  until verified listings are added.
-- **`src/data/projects.ts`** — sample projects, same convention; hidden from
-  public project cards and excluded from the sitemap until verified.
+  listings** (`sample: true`, `price: null` → "Price on request"). Replace with
+  verified listings, set `price` (UI shows price + enables price sorting), and
+  add `mapEmbedUrl`/`floorPlan` when verified.
+- **`src/data/projects.ts`** — sample projects, same convention.
 - **`src/data/testimonials.ts`** — empty on purpose (no published reviews). The
   section renders **nothing** until verified entries are added — never fake.
-- **`src/data/instagram.ts`** — recent public post/reel permalinks embedded
-  from the official Instagram profile.
 - **`src/data/imagery.ts`** — every image URL in one file (temporary Unsplash
   stock). Swap to real photography here, or drop files in `/public` and use
   local paths.
@@ -110,29 +107,17 @@ anything. On submit it opens **WhatsApp with the full enquiry pre-filled**
 3. The webhook URL/token never reach the browser. Restart `npm run build && npm run start` after adding env vars.
 4. Optional: `NEXT_PUBLIC_SITE_URL` sets the canonical production URL for SEO.
 
-## 7. Production SEO configuration
+## 7. Animation architecture
 
-- The primary Vercel domain is `www.goldenacresrealestate.co.in`; the apex
-  domain redirects to it. Set `NEXT_PUBLIC_SITE_URL` to the same www origin so
-  canonicals, Open Graph URLs, structured data and the sitemap agree.
-- Google verification is configured through
-  `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` and the matching
-  `public/google008d788f2689e4cb.html` file.
-- `.env.example` contains valid dotenv syntax and the current public site
-  values. Copy it to `.env.local` for local work; keep webhook credentials
-  server-only.
-
-## 8. Animation architecture
-
-- **Lenis** owns its animation frame loop. Reduced-motion users keep native
-  scrolling.
-- Hero and route transitions use Framer Motion.
+- **Lenis** drives smooth scroll and feeds `ScrollTrigger.update`; GSAP's
+  ticker drives Lenis — one frame loop, no controller conflicts.
+- Hero: GSAP timeline (masked line reveal) + ScrollTrigger scrub parallax.
 - Scroll reveals/cards/forms: Framer Motion (`Reveal`, `LineReveal`,
   `ImageReveal`, route transition in `app/template.tsx`).
-- `prefers-reduced-motion`: Lenis is disabled and reveals render in their
-  final state (also enforced in CSS).
+- `prefers-reduced-motion`: Lenis disabled, parallax skipped, reveals render
+  in final state (also enforced in CSS).
 
-## 9. Client checklist (assets & info needed)
+## 8. Client checklist (assets & info needed)
 
 1. Official logo file (currently a typographic GA lockup).
 2. Confirmation of phone/WhatsApp numbers (`contact.ts` → set `verified: true`).
@@ -140,6 +125,6 @@ anything. On submit it opens **WhatsApp with the full enquiry pre-filled**
 4. Verified property listings: photos, prices, exact specs, addresses.
 5. Verified projects with case-study details.
 6. Genuine customer testimonials (optional).
-7. Brand photography to replace temporary stock (`src/data/imagery.ts`) and
-   team portraits.
+7. Brand photography to replace temporary stock (`src/data/imagery.ts`),
+   Instagram post images (`src/data/instagram.ts`), team portraits.
 8. Optional OG/social share image (`public/og.jpg`) + private policy text link.

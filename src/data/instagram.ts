@@ -1,33 +1,27 @@
 import type { InstagramPost } from "@/types";
 import { social } from "@/config/social";
+import { imagery } from "./imagery";
 
 /**
  * INSTAGRAM SHOWCASE.
  *
- * Show locally hosted thumbnails because Instagram blocks embedded posts in
- * many browsers. Keep each image paired with its official post permalink.
+ * Hot-linking Instagram media is unreliable, so the showcase uses
+ * client-approved images listed here (temporary brand-adjacent stock for
+ * now). Each post links back to the official profile.
  *
- * Keep these permalinks and locally hosted thumbnails current together.
+ * TO UPDATE: drop real post images into /public/instagram and replace the
+ * entries below, or set `images: []` to hide the grid and show only the
+ * profile CTA.
  */
 export const instagramPosts: InstagramPost[] = [
-  {
-    href: "https://www.instagram.com/reel/DgFED37Tqch/",
-    image: "/instagram/nov-23-2026.jpg",
-    alt: "Property update from Golden Acres Real Estates",
-    publishedAt: "Nov 23, 2026",
-  },
-  {
-    href: "https://www.instagram.com/reel/DgDRcwzonCy/",
-    image: "/instagram/nov-22-2026.jpg",
-    alt: "Property update from Golden Acres Real Estates",
-    publishedAt: "Nov 22, 2026",
-  },
-  {
-    href: "https://www.instagram.com/p/Df_s5C_z7mT/",
-    image: "/instagram/nov-20-2026.jpg",
-    alt: "Three-bedroom house listing in Attukal",
-    publishedAt: "Nov 20, 2026",
-  },
-];
+  { image: imagery.hero, alt: "Residential property featured by Golden Acres" },
+  { image: imagery.introMain, alt: "Villa listing in Trivandrum" },
+  { image: imagery.introSecondary, alt: "Interior showcase from a recent listing" },
+  { image: imagery.aboutSecondary, alt: "Apartment interior featured by Golden Acres" },
+  { image: imagery.servicesMain, alt: "Designer kitchen in a Golden Acres listing" },
+  { image: imagery.aboutTertiary, alt: "Sunlit living space from a recent listing" },
+  { image: imagery.aboutMain, alt: "Modern home exterior in Trivandrum" },
+  { image: imagery.contactMain, alt: "Premium home with lawn, listed by Golden Acres" },
+].map((p) => ({ ...p, href: social.instagram }));
 
 export const instagramProfileUrl = social.instagram;

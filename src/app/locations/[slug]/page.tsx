@@ -55,7 +55,7 @@ export default async function LocationPage({
   if (!loc) notFound();
 
   const path = `/locations/${loc.slug}`;
-  const nearby = properties.filter((p) => !p.sample && p.location === loc.name);
+  const nearby = properties.filter((p) => p.location === loc.name);
   const otherAreas = locations.filter((l) => l.slug !== loc.slug);
   const types = propertyTypePages.filter((t) => loc.propertyTypes.includes(t.slug));
 

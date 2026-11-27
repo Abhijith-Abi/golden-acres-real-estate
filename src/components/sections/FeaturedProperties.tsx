@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, MapPin, BedDouble, Bath, Ruler, Sparkles } from "lucide-react";
+import { ArrowRight, MapPin, BedDouble, Bath, Ruler, Sparkles, Building2 } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { GhostButton } from "@/components/ui/buttons";
 import { Reveal } from "@/components/ui/motion-primitives";
@@ -21,9 +21,11 @@ const categoryNames: Record<string, string> = {
  *   - Lower Trio (Three balanced 300px cards including the Portfolio VIP Tile)
  */
 export function FeaturedProperties() {
-  const verified = properties.filter((property) => !property.sample && property.featured);
-  if (verified.length < 5) return null;
-  const [lead, p2, p3, p4, p5] = verified;
+  const lead = properties.find((p) => p.slug === "sample-residence-kazhakootam") || properties[0];
+  const p2 = properties.find((p) => p.slug === "sample-apartment-anayara") || properties[1];
+  const p3 = properties.find((p) => p.slug === "sample-commercial-enchakkal") || properties[2];
+  const p4 = properties.find((p) => p.slug === "sample-plot-vellayani") || properties[3];
+  const p5 = properties.find((p) => p.slug === "sample-villa-vilappilsala") || properties[4];
 
   return (
     <section
@@ -38,10 +40,10 @@ export function FeaturedProperties() {
             title={
               <span id="featured-heading">
                 Handpicked from{" "}
-                <em className="italic text-gold-deep">current listings</em>
+                <em className="italic text-gold-deep">this week&apos;s walk-ins</em>
               </span>
             }
-            lede="Explore verified residential and commercial properties currently available across Trivandrum."
+            lede="A snapshot of verified residential and commercial opportunities currently moving across Trivandrum."
             className="max-w-2xl"
           />
           <Reveal delay={0.15} className="hidden md:block">

@@ -2,10 +2,11 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/motion-primitives";
 import { InstagramIcon } from "@/components/ui/icons";
 import { instagramPosts, instagramProfileUrl } from "@/data/instagram";
+import Image from "next/image";
 
 /**
- * Official Instagram embeds are lazy-loaded so they do not block the initial
- * page render. The profile CTA remains available when embeds are blocked.
+ * Locally hosted post thumbnails avoid broken third-party embeds while linking
+ * visitors to the original Instagram posts.
  */
 export function InstagramShowcase() {
   return (
@@ -38,14 +39,27 @@ export function InstagramShowcase() {
           <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {instagramPosts.map((post, i) => (
               <Reveal key={post.href} delay={i * 0.05} className="mx-auto w-full max-w-[400px]">
-                <iframe
-                  src={`${post.href.replace(/\/$/, "")}/embed/`}
-                  title={`Instagram post: ${post.alt} — ${post.publishedAt}`}
-                  loading="lazy"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                  className="h-[640px] w-full border-0 bg-white"
-                />
+                <a
+                  href={post.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${post.alt}, posted ${post.publishedAt} — view on Instagram`}
+                  className="group relative block aspect-[3/4] overflow-hidden bg-charcoal/5"
+                >
+                  <Image
+                    src={post.image}
+                    alt={post.alt}
+                    fill
+                    sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                  <span className="absolute inset-0 flex items-center justify-center bg-charcoal/0 text-white opacity-0 transition-all duration-300 group-hover:bg-charcoal/25 group-hover:opacity-100 group-focus-visible:bg-charcoal/25 group-focus-visible:opacity-100">
+                    <span className="inline-flex items-center gap-2 bg-charcoal px-4 py-3 text-xs uppercase tracking-[0.16em]">
+                      <InstagramIcon className="size-4" />
+                      View on Instagram
+                    </span>
+                  </span>
+                </a>
                 <p className="mt-2 text-center text-xs text-muted-foreground">{post.publishedAt}</p>
               </Reveal>
             ))}

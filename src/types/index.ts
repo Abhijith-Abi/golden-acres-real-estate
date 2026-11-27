@@ -81,6 +81,8 @@ export interface Testimonial {
 export interface InstagramPost {
   /** Public post or reel URL from the official Golden Acres Instagram profile. */
   href: string;
+  /** Locally hosted thumbnail so the showcase works without third-party embeds. */
+  image: string;
   alt: string;
   /** Short publish date shown for context outside the embed. */
   publishedAt: string;
